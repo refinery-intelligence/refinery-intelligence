@@ -36,3 +36,10 @@ media/
 # OS junk
 .DS_Store
 Thumbs.db
+
+# Live-generated public bundle snapshots
+public/defi-flow-intel-v1.json
+public/defi-liquidation-intel-v1.json
+public/solana-temporal-intel-v1.json
+public/xrp-etf-temporal-intel-v1.json
+public/xrpl-settlement-intel-v1.json

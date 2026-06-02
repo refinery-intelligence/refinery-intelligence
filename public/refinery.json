@@ -1,0 +1,20 @@
+{
+  "platform": "Refinery",
+  "type": "agent_native_temporal_intelligence",
+  "primary_endpoint": "https://api.dalien.net",
+  "payment_networks": [
+    "Polygon USDC",
+    "XRPL"
+  ],
+  "primary_payment_network": "Polygon USDC",
+  "legacy_payment_network": "XRPL",
+  "payment_endpoints": {
+    "usdc_request": "/payments/usdc/request",
+    "usdc_verify": "/payments/usdc/verify",
+    "usdc_access": "/payments/usdc/access",
+    "usdc_bundle": "/payments/usdc/bundle"
+  },
+  "bundle_category": "defi_temporal_intelligence",
+  "machine_readable": true,
+  "status": "active"
+}

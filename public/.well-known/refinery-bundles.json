@@ -1,0 +1,31 @@
+{
+    "refinery_node": "Refinery-01",
+    "manifest_version": "0.1.0",
+    "generated_for": "autonomous_agent_discovery",
+    "production_ready": false,
+    "payment_connected": false,
+    "bundles": [
+        {
+            "bundle_id": "defi-liquidation-intel-v1",
+            "bundle_type": "DEFI_LIQUIDATION_INTEL",
+            "version": "1.4.0",
+            "status": "mock_positions_with_live_public_market_context",
+            "intended_consumer": "autonomous_agent",
+            "schema_status": "strict_validation_passed",
+            "negative_tests": "all_rejected_as_expected",
+            "source_modes": [
+                "mock_position_records",
+                "defillama_free_public_context"
+            ],
+            "access_status": "not_payment_connected",
+            "production_ready": false,
+            "payment_connected": false,
+            "notes": [
+                "Informational manifest only",
+                "No payment route active",
+                "No production access granted",
+                "No secrets or wallet details exposed"
+            ]
+        }
+    ]
+}

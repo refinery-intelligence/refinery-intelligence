@@ -1,0 +1,28 @@
+Refinery agent-discovery cleanup audit
+Timestamp UTC: 2026-06-02T06:15:00+00:00
+
+API HEAD checks:
+/meta                                200 application/json
+/packages                            200 application/json
+/packages.json                       200 application/json
+/health                              200 application/json
+/public/refinery.json                200 application/json
+/public/agent_manifest.json          200 application/json
+/public/llms.txt                     200 text/plain; charset=utf-8
+/agent_manifest.json                 200 application/json
+/refinery.json                       200 application/json
+/llms.txt                            200 text/plain; charset=utf-8
+/manifest                            200 application/json
+/discovery                           200 application/json
+/.well-known/agent.json              200 application/json
+/.well-known/ai-plugin.json          200 application/json
+/.well-known/refinery.json           200 application/json
+
+Web-domain redirect-following checks:
+https://dalien.net/refinery.json                             200 application/json https://api.dalien.net/refinery.json
+https://dalien.net/discovery                                 200 application/json https://api.dalien.net/discovery
+https://dalien.net/.well-known/agent.json                    200 application/json https://api.dalien.net/.well-known/agent.json
+https://dalien.net/.well-known/ai-plugin.json                200 application/json https://api.dalien.net/.well-known/ai-plugin.json
+https://dalien.net/.well-known/refinery.json                 200 application/json https://api.dalien.net/.well-known/refinery.json
+http://api.dalien.net/packages.json                          200 application/json https://api.dalien.net/packages.json
+http://api.dalien.net/.well-known/agent.json                 200 application/json https://api.dalien.net/.well-known/agent.json

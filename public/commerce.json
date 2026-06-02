@@ -1,0 +1,43 @@
+{
+  "service": "Refinery Intelligence",
+  "version": "commerce-v1",
+  "status": "active",
+  "payment_rails": [
+    {
+      "rail": "USDC",
+      "chain": "Base",
+      "asset": "USDC",
+      "token_standard": "ERC-20",
+      "status": "active"
+    }
+  ],
+  "bundles": [
+    {
+      "bundle_id": "defi-liquidation-intel-v1",
+      "price_usd": 0.20,
+      "access_model": "snapshot"
+    },
+    {
+      "bundle_id": "flare-temporal-intel-v1",
+      "price_usd": 0.20,
+      "access_model": "snapshot"
+    },
+    {
+      "bundle_id": "xrp-etf-temporal-intel-v1",
+      "price_usd": 0.25,
+      "access_model": "snapshot"
+    },
+    {
+      "bundle_id": "solana-temporal-intel-v1",
+      "price_usd": 0.20,
+      "access_model": "snapshot"
+    }
+  ],
+  "planned_endpoints": {
+    "request_payment": "/payments/usdc/request",
+    "confirm_payment": "/payments/usdc/confirm",
+    "check_access": "/payments/usdc/access",
+    "serve_bundle": "/payments/usdc/bundle"
+  },
+  "current_mode": "local_payment_engine_ready_public_api_pending"
+}

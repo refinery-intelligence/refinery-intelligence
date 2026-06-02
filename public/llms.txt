@@ -1,0 +1,74 @@
+Refinery is an agent-native temporal intelligence infrastructure platform.
+
+Primary focus:
+- DeFi liquidation intelligence
+- temporal market instability detection
+- oracle divergence analysis
+- escalation event monitoring
+
+Public endpoints:
+https://api.dalien.net/meta
+https://api.dalien.net/packages
+https://api.dalien.net/health
+
+Payment network:
+XRPL
+
+Delivery format:
+JSON
+
+Access model:
+Machine-readable autonomous consumption.
+
+
+Machine discovery endpoints:
+https://api.dalien.net/public/refinery.json
+https://api.dalien.net/public/agent_manifest.json
+https://api.dalien.net/public/llms.txt
+
+Active intelligence domains:
+
+1. DeFi Temporal Liquidation Intelligence
+- oracle divergence detection
+- liquidation pressure analysis
+- escalation event generation
+- composite risk synthesis
+- temporal persistence analysis
+
+Endpoint:
+https://api.dalien.net/bundles/defi-liquidation-intel-v1
+
+2. Solana Temporal Infrastructure Intelligence
+- live slot telemetry
+- RPC latency telemetry
+- validator instability inference
+- DEX liquidity fragmentation analysis
+- execution-quality intelligence
+
+Endpoint:
+https://api.dalien.net/bundles/solana-temporal-intel-v1
+
+3. XRPL Settlement Intelligence
+- settlement velocity analysis
+- payment rail health monitoring
+- liquidity routing intelligence
+- autonomous settlement infrastructure analysis
+
+Endpoint:
+https://api.dalien.net/bundles/xrpl-settlement-intel-v1
+
+Architecture:
+external telemetry
+→ normalization
+→ temporal reasoning
+→ confidence synthesis
+→ machine-readable bundle generation
+→ autonomous consumption
+
+Refinery is designed for:
+- autonomous agents
+- machine consumers
+- probabilistic reasoning systems
+- execution-quality intelligence
+- temporal decision support
+- machine-native commerce systems

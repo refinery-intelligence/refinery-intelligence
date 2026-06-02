@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://api.dalien.net/meta</loc>
+  </url>
+
+  <url>
+    <loc>https://api.dalien.net/packages</loc>
+  </url>
+
+  <url>
+    <loc>https://api.dalien.net/health</loc>
+  </url>
+
+  <url>
+    <loc>https://api.dalien.net/public/refinery.json</loc>
+  </url>
+
+  <url>
+    <loc>https://api.dalien.net/public/agent_manifest.json</loc>
+  </url>
+
+  <url>
+    <loc>https://api.dalien.net/public/llms.txt</loc>
+  </url>
+
+  <url>
+    <loc>https://api.dalien.net/bundles/defi-liquidation-intel-v1</loc>
+  </url>
+
+  <url>
+    <loc>https://api.dalien.net/bundles/solana-temporal-intel-v1</loc>
+  </url>
+
+  <url>
+    <loc>https://api.dalien.net/bundles/xrpl-settlement-intel-v1</loc>
+  </url>
+
+</urlset>

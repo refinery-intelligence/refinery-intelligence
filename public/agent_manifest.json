@@ -1,0 +1,39 @@
+{
+  "manifest_role": "platform_discovery",
+  "agent_access": true,
+  "bundle_format": "json",
+  "authentication": "payment_proof",
+  "supported_payment_proofs": [
+    "polygon_usdc",
+    "xrpl"
+  ],
+  "primary_payment_proof": "polygon_usdc",
+  "payment_endpoints": {
+    "usdc_request": "/payments/usdc/request",
+    "usdc_verify": "/payments/usdc/verify",
+    "usdc_access": "/payments/usdc/access",
+    "usdc_bundle": "/payments/usdc/bundle"
+  },
+  "history_enabled": true,
+  "available_endpoints": [
+    "/meta",
+    "/packages",
+    "/health",
+    "/public/refinery.json",
+    "/public/agent_manifest.json",
+    "/public/llms.txt"
+  ],
+  "capability_discovery": {
+    "bundle_registry": "/packages",
+    "bundle_metadata_authority": "/packages",
+    "bundle_public_urls_defined_in": "/packages",
+    "bundle_update_frequency_defined_in": "/packages",
+    "bundle_payment_terms_defined_in": "/packages"
+  },
+  "notes": [
+    "This manifest describes platform-level agent access and discovery.",
+    "Bundle-specific update frequency is defined in /packages.",
+    "Bundle-specific public URLs and capability metadata are defined per package.",
+    "Primary payment proof is Polygon USDC; XRPL is retained as legacy-compatible payment proof metadata."
+  ]
+}

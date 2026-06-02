@@ -1,0 +1,264 @@
+{
+  "bundle_id": "xrp-etf-temporal-intel-v1",
+  "version": "1.1.0",
+  "timestamp": "2026-05-31T01:21:00.939530+00:00",
+  "market_state": "stable",
+  "risk_state": "normal",
+  "risk_score": 0,
+  "etf_readiness_score": 40,
+  "flow_state": "aum_holdings_live",
+  "xrp_market": {
+    "xrp_price_usd": 1.34,
+    "market_cap_usd": 83076040681.30858,
+    "volume_24h_usd": 1505953888.540445,
+    "price_change_24h_pct": -1.0621167730554004
+  },
+  "xrpl_network": {
+    "rpc_url": "https://s1.ripple.com:51234/",
+    "rpc_latency_ms": 876.11,
+    "validated_ledger_index": "104594147",
+    "previous_ledger_index": "104594067",
+    "ledger_delta_since_last_run": null,
+    "ledger_progression_ok": true
+  },
+  "etf_registry": {
+    "tracked_products_count": 9,
+    "products": [
+      {
+        "issuer": "Bitwise",
+        "product": "Bitwise XRP ETF",
+        "ticker": null,
+        "exchange": null,
+        "sec_status": "watching",
+        "dtcc_status": "unknown",
+        "launch_status": "not_live",
+        "flow_tracking": false,
+        "last_updated": null
+      },
+      {
+        "issuer": "Franklin Templeton",
+        "product": "Franklin XRP ETF",
+        "ticker": null,
+        "exchange": null,
+        "sec_status": "watching",
+        "dtcc_status": "unknown",
+        "launch_status": "not_live",
+        "flow_tracking": false,
+        "last_updated": null
+      },
+      {
+        "issuer": "21Shares",
+        "product": "21Shares XRP ETF",
+        "ticker": null,
+        "exchange": null,
+        "sec_status": "watching",
+        "dtcc_status": "unknown",
+        "launch_status": "not_live",
+        "flow_tracking": false,
+        "last_updated": null
+      },
+      {
+        "issuer": "Canary",
+        "product": "Canary XRP ETF",
+        "ticker": null,
+        "exchange": null,
+        "sec_status": "watching",
+        "dtcc_status": "unknown",
+        "launch_status": "not_live",
+        "flow_tracking": false,
+        "last_updated": null
+      },
+      {
+        "issuer": "Grayscale",
+        "product": "Grayscale XRP Trust / ETF conversion",
+        "ticker": null,
+        "exchange": null,
+        "sec_status": "watching",
+        "dtcc_status": "unknown",
+        "launch_status": "not_live",
+        "flow_tracking": false,
+        "last_updated": null
+      },
+      {
+        "issuer": "WisdomTree",
+        "product": "WisdomTree XRP ETF",
+        "ticker": null,
+        "exchange": null,
+        "sec_status": "watching",
+        "dtcc_status": "unknown",
+        "launch_status": "not_live",
+        "flow_tracking": false,
+        "last_updated": null
+      },
+      {
+        "issuer": "ProShares",
+        "product": "ProShares XRP ETF products",
+        "ticker": null,
+        "exchange": null,
+        "sec_status": "watching",
+        "dtcc_status": "unknown",
+        "launch_status": "not_live",
+        "flow_tracking": false,
+        "last_updated": null
+      },
+      {
+        "issuer": "Volatility Shares",
+        "product": "Volatility Shares XRP ETF products",
+        "ticker": null,
+        "exchange": null,
+        "sec_status": "watching",
+        "dtcc_status": "unknown",
+        "launch_status": "not_live",
+        "flow_tracking": false,
+        "last_updated": null
+      },
+      {
+        "issuer": "REX-Osprey",
+        "product": "REX-Osprey XRP ETF products",
+        "ticker": null,
+        "exchange": null,
+        "sec_status": "watching",
+        "dtcc_status": "unknown",
+        "launch_status": "not_live",
+        "flow_tracking": false,
+        "last_updated": null
+      }
+    ],
+    "approval_claim": false,
+    "approval_claim_note": "No ETF approval inferred from DTCC, issuer, or market activity placeholders. Approval requires verified SEC/exchange/issuer confirmation."
+  },
+  "etf_flows": {
+    "flow_tracking_status": "live_source_detected",
+    "source": "xrp-insights",
+    "source_url": "https://xrp-insights.com/",
+    "source_status": "live",
+    "last_fetched": "2026-05-31T01:21:01.910942+00:00",
+    "confidence": 0.7,
+    "daily_inflow_usd": null,
+    "daily_outflow_usd": null,
+    "daily_net_flow_usd": null,
+    "cumulative_net_flow_usd": null,
+    "aum_usd": 1207990000,
+    "xrp_locked": 904760000,
+    "tracked_etfs_count": 7,
+    "products": [
+      {
+        "issuer": "Bitwise",
+        "ticker": "XRP",
+        "aum_usd": 340900000,
+        "xrp_holdings": 254170000,
+        "expense_ratio": "0.34%"
+      },
+      {
+        "issuer": "Franklin Templeton",
+        "ticker": "XRPZ",
+        "aum_usd": 269600000,
+        "xrp_holdings": 207990000,
+        "expense_ratio": "0.19%"
+      },
+      {
+        "issuer": "Canary Capital",
+        "ticker": "XRPC",
+        "aum_usd": 293100000,
+        "xrp_holdings": 218440000,
+        "expense_ratio": "0.50%"
+      },
+      {
+        "issuer": "21Shares",
+        "ticker": "TOXR",
+        "aum_usd": 145900000,
+        "xrp_holdings": 108810000,
+        "expense_ratio": "0.50%"
+      },
+      {
+        "issuer": "Grayscale",
+        "ticker": "GXRP",
+        "aum_usd": 72400000,
+        "xrp_holdings": 52540000,
+        "expense_ratio": null
+      },
+      {
+        "issuer": "REX-Osprey",
+        "ticker": "XRPR",
+        "aum_usd": 54900000,
+        "xrp_holdings": 39710000,
+        "expense_ratio": "0.75%"
+      },
+      {
+        "issuer": "Bitwise Index",
+        "ticker": "BITW",
+        "aum_usd": 31200000,
+        "xrp_holdings": 23110000,
+        "expense_ratio": "2.50%"
+      }
+    ],
+    "premium_discount_pct": null,
+    "note": "ETF AUM and holdings sourced from XRP Insights public structured page data. Flow values remain null until a reliable free flow endpoint is isolated."
+  },
+  "dtcc": {
+    "parser_status": "scaffold",
+    "watched_products_count": 5,
+    "dtcc_products_found": 0,
+    "prelaunch_detected": false,
+    "products": [
+      {
+        "issuer": "Bitwise",
+        "ticker": null,
+        "dtcc_detected": false
+      },
+      {
+        "issuer": "Franklin Templeton",
+        "ticker": null,
+        "dtcc_detected": false
+      },
+      {
+        "issuer": "21Shares",
+        "ticker": null,
+        "dtcc_detected": false
+      },
+      {
+        "issuer": "Canary",
+        "ticker": null,
+        "dtcc_detected": false
+      },
+      {
+        "issuer": "Grayscale",
+        "ticker": null,
+        "dtcc_detected": false
+      }
+    ],
+    "approval_claim": false,
+    "note": "DTCC operational/prelaunch signals must not be treated as SEC approval."
+  },
+  "sec": {
+    "status": "placeholder",
+    "filing_detected": null,
+    "amendment_activity": null,
+    "note": "SEC EDGAR filing parser reserved for v1.2."
+  },
+  "claim_guardrail": {
+    "approval_claim": false,
+    "approval_claim_source": null,
+    "guardrail_active": true,
+    "note": "Approval claims require verified SEC, exchange, or issuer confirmation."
+  },
+  "signals": [
+    {
+      "type": "issuer_watchlist_depth",
+      "severity": "low",
+      "value": 9
+    },
+    {
+      "type": "xrp_etf_aum_detected",
+      "severity": "medium",
+      "value_usd": 1207990000
+    },
+    {
+      "type": "xrp_etf_holdings_detected",
+      "severity": "medium",
+      "value_xrp": 904760000
+    }
+  ],
+  "errors": [],
+  "summary": "XRP ETF intelligence state: stable. XRP price is $1.340000 with 24h change of -1.06%. XRPL validated ledger is 104594147. XRPL RPC latency measured at 876.11 ms. 9 XRP ETF/ETP candidates are in the watchlist. Live ETF AUM/holdings layer is active from xrp-insights: $1207.99M AUM, 904.76M XRP locked, 7 tracked products."
+}

@@ -1,0 +1,38 @@
+# Secrets / environment
+.env
+*.env
+
+# Python environments and caches
+env/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Editor swap/temp files
+*.swp
+*.swo
+*~
+
+# Logs and live telemetry
+*.log
+logs
+node_telemetry.csv
+
+# Backups
+*.bak*
+*.backup*
+*.old
+
+# Live/private vault state
+vault/
+data/
+feeds/
+
+# Large docs / local media
+*.pdf
+media/
+
+# OS junk
+.DS_Store
+Thumbs.db

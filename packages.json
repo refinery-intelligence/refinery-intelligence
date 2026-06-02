@@ -1,0 +1,242 @@
+{
+  "defi-liquidation-intel-v1": {
+    "version": "1.1.0",
+    "category": "defi_temporal_intelligence",
+    "price_usd": 0.2,
+    "payment_asset": "USDC",
+    "payment_network": "Polygon",
+    "legacy_payment_network": "XRPL",
+    "delivery_format": "json",
+    "update_frequency": "5_minutes",
+    "signal_count": 16,
+    "signals": [
+      "oracle_divergence",
+      "liquidation_pressure_proxy",
+      "composite_liquidation_risk",
+      "escalation_event"
+    ],
+    "intelligence_features": [
+      "confidence_scoring",
+      "temporal_urgency",
+      "agent_action_hints",
+      "value_reasoning",
+      "trend_detection",
+      "anomaly_detection",
+      "risk_delta_tracking"
+    ],
+    "paid_payload_fields": [
+      "bundle_id",
+      "version",
+      "timestamp",
+      "signal_count",
+      "signals",
+      "confidence",
+      "temporal_urgency",
+      "agent_action_hint",
+      "value_reason",
+      "temporal.trend",
+      "temporal.anomaly",
+      "temporal.risk_delta"
+    ],
+    "supported_chains": [
+      "Ethereum",
+      "Arbitrum",
+      "Base"
+    ],
+    "description": "Agent-ready DeFi liquidation intelligence bundle with oracle divergence, liquidation pressure proxies, composite liquidation risk, escalation events, confidence scoring, temporal trend detection, anomaly detection, and agent action guidance.",
+    "public_url": "/public/defi-liquidation-intel-v1.json"
+  },
+  "solana-temporal-intel-v1": {
+    "version": "1.0.0",
+    "category": "solana_temporal_intelligence",
+    "price_usd": 0.2,
+    "payment_asset": "USDC",
+    "payment_network": "Polygon",
+    "legacy_payment_network": "XRPL",
+    "delivery_format": "json",
+    "update_frequency": "60_seconds",
+    "signal_count": 5,
+    "signals": [
+      "slot_progression",
+      "slot_velocity",
+      "rpc_latency",
+      "rpc_latency_anomaly",
+      "temporal_network_health"
+    ],
+    "intelligence_features": [
+      "health_scoring",
+      "latency_monitoring",
+      "anomaly_detection",
+      "network_state_classification",
+      "severity_classification",
+      "agent_action_hints"
+    ],
+    "paid_payload_fields": [
+      "timestamp",
+      "latest_slot",
+      "slot_delta",
+      "slots_per_second",
+      "latest_rpc_latency_seconds",
+      "average_rpc_latency_seconds",
+      "max_rpc_latency_seconds",
+      "latency_state",
+      "network_state",
+      "health_score",
+      "anomaly_detected",
+      "anomaly_type",
+      "severity",
+      "agent_action_hint",
+      "signal_layers"
+    ],
+    "supported_chains": [
+      "Solana"
+    ],
+    "description": "Agent-ready Solana temporal infrastructure intelligence bundle providing slot progression, slot velocity, RPC latency monitoring, latency anomaly detection, network health classification, severity state, and execution guidance.",
+    "public_url": "/public/solana-temporal-intel-v1.json"
+  },
+  "xrpl-settlement-intel-v1": {
+    "version": "1.1.0",
+    "category": "xrpl_settlement_intelligence",
+    "delivery_format": "json",
+    "update_frequency": "5_minutes",
+    "signals": [
+      "xrpl_settlement_velocity",
+      "xrpl_payment_rail_health",
+      "xrpl_liquidity_routing_watch"
+    ],
+    "supported_chains": [
+      "XRPL"
+    ],
+    "description": "Agent-native XRPL settlement intelligence derived from live validated ledger telemetry.",
+    "price_usd": 0.2,
+    "payment_asset": "USDC",
+    "payment_network": "Polygon",
+    "public_url": "/public/xrpl-settlement-intel-v1.json",
+    "signal_count": 4,
+    "intelligence_features": [
+      "live_validated_ledger_progression",
+      "settlement_latency_monitoring",
+      "payment_rail_health_scoring",
+      "congestion_state_detection",
+      "network_health_classification",
+      "agent_action_hints"
+    ],
+    "paid_payload_fields": [
+      "source_type",
+      "confidence",
+      "signal_strength",
+      "network_state",
+      "congestion_state",
+      "signals[].signal_type",
+      "signals[].validated_ledger_seq",
+      "signals[].ledger_delta",
+      "signals[].ledgers_per_second",
+      "signals[].validated_ledger_age_seconds",
+      "signals[].rpc_latency_seconds",
+      "signals[].ledger_freshness",
+      "signals[].network_health_score",
+      "signals[].load_factor",
+      "signals[].load_state",
+      "signals[].validation_quorum",
+      "signals[].congestion_state",
+      "signals[].confidence",
+      "signals[].temporal_urgency",
+      "signals[].agent_action_hint",
+      "signals[].value_reason"
+    ],
+    "source_type": "live_xrpl_validated_telemetry"
+  },
+  "defi-flow-intel-v1": {
+    "version": "1.0.0",
+    "category": "defi_flow_intelligence",
+    "price_usd": 0.2,
+    "payment_asset": "USDC",
+    "payment_network": "Polygon",
+    "legacy_payment_network": "XRPL",
+    "delivery_format": "json",
+    "update_frequency": "5_minutes",
+    "sources": [
+      "stablecoins",
+      "chains",
+      "protocols",
+      "dex_volumes",
+      "fees",
+      "yields"
+    ],
+    "signal_count": 6,
+    "signals": [
+      "stablecoin_liquidity_concentration",
+      "chain_tvl_concentration",
+      "protocol_tvl_concentration",
+      "dex_volume_concentration",
+      "fee_generation_concentration",
+      "yield_opportunity_context"
+    ],
+    "intelligence_features": [
+      "source_health_tracking",
+      "liquidity_concentration_score",
+      "market_structure_classification",
+      "multi-source_defi_flow_context",
+      "agent_decision_summary"
+    ],
+    "paid_payload_fields": [
+      "package_id",
+      "version",
+      "generated_at",
+      "sources",
+      "source_status",
+      "signal_layer",
+      "intelligence_layer.market_structure",
+      "intelligence_layer.liquidity_concentration_score",
+      "intelligence_layer.confidence_score",
+      "agent_summary"
+    ],
+    "supported_domains": [
+      "DeFi",
+      "DEX",
+      "Yield",
+      "Liquidity",
+      "Stablecoins",
+      "Cross-chain"
+    ],
+    "public_url": "/public/defi-flow-intel-v1.json",
+    "description": "Agent-ready DeFi flow intelligence bundle aggregating stablecoin supply, chain TVL, protocol TVL, DEX volume, fee generation, yield context, liquidity concentration scoring, and market-structure classification."
+  },
+  "xrp-etf-temporal-intel-v1": {
+    "version": "1.1.0",
+    "category": "xrp_etf_temporal_intelligence",
+    "price_usd": 0.25,
+    "payment_asset": "USDC",
+    "payment_network": "Polygon",
+    "legacy_payment_network": "XRPL",
+    "delivery_format": "json",
+    "update_frequency": "5_minutes",
+    "signals": [
+      "xrp_market_intelligence",
+      "xrpl_telemetry",
+      "etf_aum_detected",
+      "etf_holdings_detected",
+      "etf_holdings_delta"
+    ],
+    "supported_chains": [
+      "XRPL"
+    ],
+    "public_url": "/public/xrp-etf-temporal-intel-v1.json",
+    "description": "Agent-ready XRP market, XRPL telemetry, ETF AUM, ETF holdings, and temporal ETF delta intelligence bundle.",
+    "signal_count": 5,
+    "intelligence_features": [
+      "xrp_market_intelligence",
+      "xrpl_telemetry",
+      "etf_aum_tracking",
+      "etf_holdings_tracking",
+      "etf_holdings_delta_detection"
+    ],
+    "paid_payload_fields": [
+      "xrp_market_intelligence",
+      "xrpl_telemetry",
+      "etf_aum_detected",
+      "etf_holdings_detected",
+      "etf_holdings_delta"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "agent_id": "Refinery-01_TAS",
+  "capabilities": ["AU_Fuel_Intelligence", "Agriculture_Risk_Assessment", "XRP_Settled_Data"],
+  "endpoints": {
+    "manifest": "/manifest.json",
+    "x402_payment": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
+  },
+  "auth": "x402",
+  "region": "AU-TAS"
+}
+

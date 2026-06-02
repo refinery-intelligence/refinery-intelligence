@@ -43,3 +43,11 @@ public/defi-liquidation-intel-v1.json
 public/solana-temporal-intel-v1.json
 public/xrp-etf-temporal-intel-v1.json
 public/xrpl-settlement-intel-v1.json
+
+# Local scratch / accidental paste artifacts
+ChatGPT-User*
+*.save
+"dev prompt for chat"
+"refinery coer ethics"
+"docs/refinery test wallet"
+docs/Rabby

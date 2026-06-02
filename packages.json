@@ -44,7 +44,20 @@
       "Base"
     ],
     "description": "Agent-ready DeFi liquidation intelligence bundle with oracle divergence, liquidation pressure proxies, composite liquidation risk, escalation events, confidence scoring, temporal trend detection, anomaly detection, and agent action guidance.",
-    "public_url": "/public/defi-liquidation-intel-v1.json"
+    "public_url": "/public/defi-liquidation-intel-v1.json",
+    "preview_url": "/public/defi-liquidation-intel-v1.json",
+    "public_url_role": "preview_only",
+    "public_payload": "redacted",
+    "payment_required": true,
+    "paid_payload_route": "/payments/usdc/bundle",
+    "verify_payment_route": "/payments/usdc/verify",
+    "access_route": "/payments/usdc/access",
+    "request_payment_route": "/payments/usdc/request",
+    "delivery_policy": {
+      "preview": "Public URL returns redacted discovery preview only.",
+      "full_payload": "Full bundle payload is delivered only after payment verification.",
+      "verification_required": true
+    }
   },
   "solana-temporal-intel-v1": {
     "version": "1.0.0",
@@ -92,7 +105,20 @@
       "Solana"
     ],
     "description": "Agent-ready Solana temporal infrastructure intelligence bundle providing slot progression, slot velocity, RPC latency monitoring, latency anomaly detection, network health classification, severity state, and execution guidance.",
-    "public_url": "/public/solana-temporal-intel-v1.json"
+    "public_url": "/public/solana-temporal-intel-v1.json",
+    "preview_url": "/public/solana-temporal-intel-v1.json",
+    "public_url_role": "preview_only",
+    "public_payload": "redacted",
+    "payment_required": true,
+    "paid_payload_route": "/payments/usdc/bundle",
+    "verify_payment_route": "/payments/usdc/verify",
+    "access_route": "/payments/usdc/access",
+    "request_payment_route": "/payments/usdc/request",
+    "delivery_policy": {
+      "preview": "Public URL returns redacted discovery preview only.",
+      "full_payload": "Full bundle payload is delivered only after payment verification.",
+      "verification_required": true
+    }
   },
   "xrpl-settlement-intel-v1": {
     "version": "1.1.0",
@@ -144,7 +170,20 @@
       "signals[].agent_action_hint",
       "signals[].value_reason"
     ],
-    "source_type": "live_xrpl_validated_telemetry"
+    "source_type": "live_xrpl_validated_telemetry",
+    "preview_url": "/public/xrpl-settlement-intel-v1.json",
+    "public_url_role": "preview_only",
+    "public_payload": "redacted",
+    "payment_required": true,
+    "paid_payload_route": "/payments/usdc/bundle",
+    "verify_payment_route": "/payments/usdc/verify",
+    "access_route": "/payments/usdc/access",
+    "request_payment_route": "/payments/usdc/request",
+    "delivery_policy": {
+      "preview": "Public URL returns redacted discovery preview only.",
+      "full_payload": "Full bundle payload is delivered only after payment verification.",
+      "verification_required": true
+    }
   },
   "defi-flow-intel-v1": {
     "version": "1.0.0",
@@ -200,7 +239,20 @@
       "Cross-chain"
     ],
     "public_url": "/public/defi-flow-intel-v1.json",
-    "description": "Agent-ready DeFi flow intelligence bundle aggregating stablecoin supply, chain TVL, protocol TVL, DEX volume, fee generation, yield context, liquidity concentration scoring, and market-structure classification."
+    "description": "Agent-ready DeFi flow intelligence bundle aggregating stablecoin supply, chain TVL, protocol TVL, DEX volume, fee generation, yield context, liquidity concentration scoring, and market-structure classification.",
+    "preview_url": "/public/defi-flow-intel-v1.json",
+    "public_url_role": "preview_only",
+    "public_payload": "redacted",
+    "payment_required": true,
+    "paid_payload_route": "/payments/usdc/bundle",
+    "verify_payment_route": "/payments/usdc/verify",
+    "access_route": "/payments/usdc/access",
+    "request_payment_route": "/payments/usdc/request",
+    "delivery_policy": {
+      "preview": "Public URL returns redacted discovery preview only.",
+      "full_payload": "Full bundle payload is delivered only after payment verification.",
+      "verification_required": true
+    }
   },
   "xrp-etf-temporal-intel-v1": {
     "version": "1.1.0",
@@ -237,6 +289,75 @@
       "etf_aum_detected",
       "etf_holdings_detected",
       "etf_holdings_delta"
-    ]
+    ],
+    "preview_url": "/public/xrp-etf-temporal-intel-v1.json",
+    "public_url_role": "preview_only",
+    "public_payload": "redacted",
+    "payment_required": true,
+    "paid_payload_route": "/payments/usdc/bundle",
+    "verify_payment_route": "/payments/usdc/verify",
+    "access_route": "/payments/usdc/access",
+    "request_payment_route": "/payments/usdc/request",
+    "delivery_policy": {
+      "preview": "Public URL returns redacted discovery preview only.",
+      "full_payload": "Full bundle payload is delivered only after payment verification.",
+      "verification_required": true
+    }
+  },
+  "flare-temporal-intel-v1": {
+    "version": "1.0.0",
+    "category": "flare_temporal_intelligence",
+    "price_usd": 0.2,
+    "payment_asset": "USDC",
+    "payment_network": "Polygon",
+    "legacy_payment_network": "XRPL",
+    "delivery_format": "json",
+    "update_frequency": "5_minutes",
+    "signal_count": 5,
+    "signals": [
+      "flare_rpc_latency",
+      "flare_block_progression",
+      "flr_market_state",
+      "flare_defi_tvl",
+      "rpc_latency_elevated"
+    ],
+    "intelligence_features": [
+      "rpc_latency_monitoring",
+      "block_progression_tracking",
+      "market_state_classification",
+      "risk_state_classification",
+      "defi_tvl_context"
+    ],
+    "paid_payload_fields": [
+      "bundle_id",
+      "version",
+      "timestamp",
+      "market_state",
+      "risk_state",
+      "risk_score",
+      "network",
+      "token_market",
+      "defi",
+      "signals",
+      "summary"
+    ],
+    "supported_chains": [
+      "Flare"
+    ],
+    "description": "Agent-ready Flare temporal intelligence bundle tracking Flare RPC latency, block progression, FLR market state, DeFi TVL context, risk state, and anomaly signals.",
+    "public_url": "/public/flare-temporal-intel-v1.json",
+    "preview_url": "/public/flare-temporal-intel-v1.json",
+    "public_url_role": "preview_only",
+    "public_payload": "redacted",
+    "payment_required": true,
+    "paid_payload_route": "/payments/usdc/bundle",
+    "verify_payment_route": "/payments/usdc/verify",
+    "access_route": "/payments/usdc/access",
+    "request_payment_route": "/payments/usdc/request",
+    "delivery_policy": {
+      "preview": "Public URL returns redacted discovery preview only.",
+      "full_payload": "Full bundle payload is delivered only after payment verification.",
+      "verification_required": true
+    }
   }
 }

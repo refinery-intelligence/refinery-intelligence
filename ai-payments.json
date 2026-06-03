@@ -1,0 +1,23 @@
+{
+
+  "version": "1.0",
+
+  "node_id": "REF-01-TAS",
+
+  "payment_address": "rpxqpBFyrBBvjHJmpjtnei149eecbXy28A",
+
+  "asset": "XRP",
+
+  "pricing": {
+
+    "per_crawl": 0.01,
+
+    "bulk_100": 0.80
+
+  },
+
+  "data_types": ["hardware_telemetry", "edge_compute_logs"],
+
+  "network": "XRPL_Mainnet"
+
+}

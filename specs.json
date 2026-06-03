@@ -1,0 +1,21 @@
+{
+  "project_name": "Refinery-01_Tasmania",
+  "system_type": "Modular_Biomass_Gasification",
+  "hardware_specs": {
+    "primary_units": ["Powermax PXG-50kW", "Ankur Scientific FBG-100"],
+    "target_output": "50kW - 100kW Continuous",
+    "feedstock_compat": ["Oil Palm Waste", "Hardwood Biomass"],
+    "moisture_management": {
+        "pre_processing": "Rotary Drum Dryer",
+        "input_threshold": "70% MC",
+        "target_output": "<15% MC"
+    }
+  },
+  "pyrolysis_expansion": {
+    "module_type": "Waste-to-Diesel",
+    "input_source": "Recycled Polymer/Tires",
+    "components": ["Reactor", "Distillation Column", "Deodorization System"]
+  },
+  "energy_strategy": "Grid-Independent Agricultural Estate",
+  "compliance_status": "Drafting Regional Tasmania Standards"
+}

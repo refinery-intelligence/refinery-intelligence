@@ -1,0 +1,27 @@
+{
+    "bundles": [
+        {
+            "bundle_id": "defi-liquidation-intel-v1",
+            "bundle_type": "DEFI_LIQUIDATION_INTEL",
+            "version": "1.4.0",
+            "status": "mock_positions_with_live_public_market_context",
+            "module_path": "bundles/liquidation/",
+            "validation_command": "python3 bundles/liquidation/validate_bundle.py",
+            "negative_test_command": "python3 bundles/liquidation/test_negative_validation.py",
+            "source_modes": [
+                "mock_position_records",
+                "defillama_free_public_context"
+            ],
+            "intended_consumer": "autonomous_agent",
+            "payment_connected": false,
+            "production_ready": false,
+            "notes": [
+                "Uses mock/demo liquidation position records",
+                "Includes optional live public DeFiLlama market context",
+                "Does not use API keys",
+                "Not connected to XRPL payment routing yet",
+                "Strict positive and negative validation tests pass"
+            ]
+        }
+    ]
+}

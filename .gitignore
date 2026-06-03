@@ -51,3 +51,23 @@ ChatGPT-User*
 "refinery coer ethics"
 "docs/refinery test wallet"
 docs/Rabby
+
+# Local notes / prompts
+dev prompt for chat
+refinery coer ethics
+docs/refinery test wallet
+
+# Local inventory / working scratch
+inventory/
+
+# Old bundle backup folders
+bundles/liquidation_backup_v1_3_0/
+bundles/liquidation_backup_v1_4_0/
+
+# Test / experimental transaction tools
+bot_crawl.py
+oracle_node.py
+send_test_xrp.py
+verify_fix.py
+xrpl_probe.py
+xrp_listener_backup.py

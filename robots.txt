@@ -1,0 +1,10 @@
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: *
+Disallow: /private/
+# Commercial use of Refinery-01 data requires a license.
+# Micropayments accepted at: [YOUR_XRP_OR_FLR_ADDRESS]

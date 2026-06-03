@@ -1,0 +1,12 @@
+{
+  "document_update": "v1.1",
+  "timestamp": "2026-05-09T20:15:00Z",
+  "status": "CURRENT_PRODUCTION",
+  "new_specs": {
+    "settlement_protocol": "15-minute XRP Heartbeat",
+    "reactor_logic": "Automated compliance-gated downdraft control",
+    "processing": "Integrated Rotary Drum Dryer (Active)",
+    "security": "Three-tier Vault/Airlock architecture"
+  },
+  "compliance_signature": "TAS-AU-REFINERY-2026-STABLE"
+}

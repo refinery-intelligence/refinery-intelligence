@@ -255,7 +255,7 @@
     }
   },
   "xrp-etf-temporal-intel-v1": {
-    "version": "1.2.0",
+    "version": "1.3.0",
     "category": "xrp_etf_temporal_intelligence",
     "price_usd": 0.25,
     "payment_asset": "USDC",
@@ -274,7 +274,7 @@
       "XRPL"
     ],
     "public_url": "/public/xrp-etf-temporal-intel-v1.json",
-    "description": "Agent-ready XRP ETF temporal intelligence bundle with XRP market state, XRPL network context, issuer watchlist depth, live AUM/holdings detection, ETF flow state, source-status tracking, SEC/DTCC claim guardrails, composite readiness scoring, and agent action guidance.",
+    "description": "Agent-ready XRP ETF temporal intelligence bundle with XRP market state, XRPL network context, issuer watchlist depth, live AUM/holdings detection, ETF flow state, source-status tracking, SEC/DTCC claim guardrails, composite readiness scoring, temporal delta tracking, market-flow correlation hints, and agent action priority.",
     "signal_count": 5,
     "intelligence_features": [
       "xrp_market_state_tracking",
@@ -286,7 +286,12 @@
       "sec_dtcc_claim_guardrails",
       "composite_readiness_scoring",
       "agent_action_hints",
-      "agent_decision_summary"
+      "agent_decision_summary",
+      "aum_holdings_delta_tracking",
+      "readiness_score_delta_tracking",
+      "source_change_detection",
+      "market_flow_correlation_hinting",
+      "agent_action_priority"
     ],
     "paid_payload_fields": [
       "bundle_id",
@@ -311,7 +316,12 @@
       "composite_readiness_layer",
       "agent_action_hint",
       "agent_decision_summary",
-      "summary"
+      "summary",
+      "etf_flow_delta_layer",
+      "readiness_delta_layer",
+      "source_change_layer",
+      "market_flow_correlation_layer",
+      "agent_action_priority"
     ],
     "preview_url": "/public/xrp-etf-temporal-intel-v1.json",
     "public_url_role": "preview_only",

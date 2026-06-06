@@ -14,7 +14,18 @@
     "usdc_access": "/payments/usdc/access",
     "usdc_bundle": "/payments/usdc/bundle"
   },
-  "bundle_category": "defi_temporal_intelligence",
   "machine_readable": true,
-  "status": "active"
+  "status": "active",
+  "bundle_category_model": "multi_category",
+  "bundle_categories": [
+    "defi_temporal_intelligence",
+    "solana_temporal_intelligence",
+    "xrpl_settlement_intelligence",
+    "defi_flow_intelligence",
+    "xrp_etf_temporal_intelligence",
+    "flare_temporal_intelligence"
+  ],
+  "bundle_count": 6,
+  "bundle_registry": "/packages",
+  "canonical_registry_source": "registry/packages.registry.json"
 }

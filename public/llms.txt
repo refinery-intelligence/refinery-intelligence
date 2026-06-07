@@ -1,74 +1,46 @@
-Refinery is an agent-native temporal intelligence infrastructure platform.
+Refinery is an agent-native temporal intelligence platform for autonomous systems.
 
-Primary focus:
-- DeFi liquidation intelligence
-- temporal market instability detection
-- oracle divergence analysis
-- escalation event monitoring
+Canonical discovery:
+- Platform metadata summary: /meta
+- Public bundle registry: /packages
+- Public bundle registry alias: /packages.json
+- Health: /health
+- Platform manifest: /public/refinery.json
+- Agent manifest: /public/agent_manifest.json
 
-Public endpoints:
-https://api.dalien.net/meta
-https://api.dalien.net/packages
-https://api.dalien.net/health
+Bundle model:
+- multi_bundle_temporal_intelligence
+- six active public bundles
+- all current public bundles are paid bundles with redacted public previews
+- agents should use /packages as the canonical per-bundle source of truth
 
-Payment network:
-XRPL
+Current public bundle categories:
+- defi_temporal_intelligence
+- solana_temporal_intelligence
+- xrpl_settlement_intelligence
+- defi_flow_intelligence
+- xrp_etf_temporal_intelligence
+- flare_temporal_intelligence
 
-Delivery format:
-JSON
+Cadence model:
+- supported cadences: 60 seconds, 300 seconds
+- use /packages for per-bundle cadence and payment metadata
+- use /meta for platform-level summary only
 
-Access model:
-Machine-readable autonomous consumption.
+Payment model:
+- primary payment network: Polygon USDC
+- legacy payment network: XRPL
+- payment request: /payments/usdc/request
+- payment verification: /payments/usdc/verify
+- payment access check: /payments/usdc/access
+- paid payload retrieval: /payments/usdc/bundle
 
+Access behavior:
+- public preview URLs return redacted preview payloads only
+- full paid bundle payloads are retrieved through /payments/usdc/bundle after successful payment verification or valid access
+- unpaid access and unpaid bundle retrieval should fail safely with structured JSON
 
-Machine discovery endpoints:
-https://api.dalien.net/public/refinery.json
-https://api.dalien.net/public/agent_manifest.json
-https://api.dalien.net/public/llms.txt
-
-Active intelligence domains:
-
-1. DeFi Temporal Liquidation Intelligence
-- oracle divergence detection
-- liquidation pressure analysis
-- escalation event generation
-- composite risk synthesis
-- temporal persistence analysis
-
-Endpoint:
-https://api.dalien.net/bundles/defi-liquidation-intel-v1
-
-2. Solana Temporal Infrastructure Intelligence
-- live slot telemetry
-- RPC latency telemetry
-- validator instability inference
-- DEX liquidity fragmentation analysis
-- execution-quality intelligence
-
-Endpoint:
-https://api.dalien.net/bundles/solana-temporal-intel-v1
-
-3. XRPL Settlement Intelligence
-- settlement velocity analysis
-- payment rail health monitoring
-- liquidity routing intelligence
-- autonomous settlement infrastructure analysis
-
-Endpoint:
-https://api.dalien.net/bundles/xrpl-settlement-intel-v1
-
-Architecture:
-external telemetry
-→ normalization
-→ temporal reasoning
-→ confidence synthesis
-→ machine-readable bundle generation
-→ autonomous consumption
-
-Refinery is designed for:
-- autonomous agents
-- machine consumers
-- probabilistic reasoning systems
-- execution-quality intelligence
-- temporal decision support
-- machine-native commerce systems
+Agent guidance:
+- use /packages for bundle IDs, categories, preview URLs, payment metadata, intelligence_features, and per-bundle truth
+- use /meta for platform-level counts, cadence summary, and registry status
+- do not infer bundle specifics from this file when /packages provides a more specific answer

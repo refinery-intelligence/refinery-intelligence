@@ -347,6 +347,11 @@ async def well_known_ai_plugin_head():
     return head_response("application/json")
 
 
+@app.get("/favicon.ico")
+async def favicon():
+    return Response(status_code=204)
+
+
 @app.get("/")
 async def root():
 

@@ -17,6 +17,7 @@ app.mount("/public", StaticFiles(directory="public"), name="public")
 
 BASE_DIR = Path(__file__).resolve().parent
 PACKAGES_PATH = BASE_DIR / "packages.json"
+CANONICAL_REGISTRY_PATH = BASE_DIR / "registry" / "packages.registry.json"
 
 
 def json_file_response(relative_path: str):
@@ -141,6 +142,139 @@ async def well_known_ai_plugin_json():
     }
 
 
+
+
+def load_canonical_registry():
+    if not CANONICAL_REGISTRY_PATH.exists() or not CANONICAL_REGISTRY_PATH.is_file():
+        raise FileNotFoundError(f"canonical registry not found: {CANONICAL_REGISTRY_PATH}")
+
+    with open(CANONICAL_REGISTRY_PATH, "r", encoding="utf-8") as f:
+        registry = json.load(f)
+
+    if not isinstance(registry, dict):
+        raise ValueError("canonical registry root must be an object")
+
+    bundles = registry.get("bundles")
+    if not isinstance(bundles, list):
+        raise ValueError("canonical registry bundles must be a list")
+
+    return registry
+
+
+def build_meta_from_registry():
+    registry = load_canonical_registry()
+    bundles = registry.get("bundles", [])
+
+    public_bundles = [
+        bundle for bundle in bundles
+        if bundle.get("visibility") == "public"
+    ]
+
+    active_bundles = [
+        bundle for bundle in bundles
+        if bundle.get("status") == "active"
+    ]
+
+    payment_enabled_bundles = [
+        bundle for bundle in bundles
+        if bundle.get("payment_enabled") is True
+    ]
+
+    cadence_seconds_available = sorted({
+        int(bundle["cadence_seconds"])
+        for bundle in public_bundles
+        if isinstance(bundle.get("cadence_seconds"), (int, float))
+    })
+
+    freshness_sla_values = [
+        int(bundle["freshness_sla_seconds"])
+        for bundle in public_bundles
+        if isinstance(bundle.get("freshness_sla_seconds"), (int, float))
+    ]
+
+    bundle_categories = sorted({
+        bundle["category"]
+        for bundle in public_bundles
+        if isinstance(bundle.get("category"), str) and bundle.get("category")
+    })
+
+    bundle_signal_counts = {}
+    total_signal_count = 0
+
+    for bundle in public_bundles:
+        bundle_id = bundle.get("bundle_id")
+        signals = bundle.get("signals", [])
+        signal_count = len(signals) if isinstance(signals, list) else 0
+
+        if isinstance(bundle_id, str) and bundle_id:
+            bundle_signal_counts[bundle_id] = signal_count
+            total_signal_count += signal_count
+
+    payment_networks = sorted({
+        bundle["payment"]["network"]
+        for bundle in public_bundles
+        if isinstance(bundle.get("payment"), dict)
+        and isinstance(bundle["payment"].get("network"), str)
+        and bundle["payment"].get("network")
+    })
+
+    payment_network_labels = [
+        f"{network} USDC" if network == "Polygon" else network
+        for network in payment_networks
+    ]
+
+    if "Polygon" in payment_networks:
+        primary_payment_network = "Polygon USDC"
+    elif payment_network_labels:
+        primary_payment_network = payment_network_labels[0]
+    else:
+        primary_payment_network = "Polygon USDC"
+
+    cadence_model = "mixed"
+    if len(cadence_seconds_available) == 1:
+        cadence_model = "uniform"
+
+    return {
+        "platform": "Refinery",
+        "node": "Refinery-01",
+        "version": "1.1.0",
+        "status": "online",
+        "mode": "agent_only",
+        "machine_readable": True,
+        "registry_loaded": True,
+        "canonical_registry_source": "registry/packages.registry.json",
+        "bundle_model": "multi_bundle_temporal_intelligence",
+        "bundle_count": len(bundles),
+        "active_bundle_count": len(active_bundles),
+        "public_bundle_count": len(public_bundles),
+        "payment_enabled_bundle_count": len(payment_enabled_bundles),
+        "bundle_categories": bundle_categories,
+        "total_signal_count": total_signal_count,
+        "bundle_signal_counts": bundle_signal_counts,
+        "cadence_model": cadence_model,
+        "cadence_seconds_available": cadence_seconds_available,
+        "min_cadence_seconds": min(cadence_seconds_available) if cadence_seconds_available else None,
+        "max_freshness_sla_seconds": max(freshness_sla_values) if freshness_sla_values else None,
+        "payment_networks": payment_network_labels or ["Polygon USDC", "XRPL"],
+        "primary_payment_network": primary_payment_network,
+        "legacy_payment_network": "XRPL",
+        "payment_endpoints": {
+            "usdc_request": "/payments/usdc/request",
+            "usdc_verify": "/payments/usdc/verify",
+            "usdc_access": "/payments/usdc/access",
+            "usdc_bundle": "/payments/usdc/bundle"
+        },
+        "history": {
+            "available": any(bundle.get("history_enabled") is True for bundle in public_bundles),
+            "model": "bundle_specific"
+        },
+        "packages_endpoint": "/packages",
+        "discovery": {
+            "refinery_json": "/public/refinery.json",
+            "agent_manifest": "/public/agent_manifest.json",
+            "llms_txt": "/public/llms.txt"
+        }
+    }
 
 
 def head_response(media_type: str = "application/json"):
@@ -344,33 +478,17 @@ async def health():
 
 @app.get("/meta")
 async def meta():
-    return {
-        "platform": "Refinery",
-        "node": "Refinery-01",
-        "version": "1.1.0",
-        "status": "online",
-        "mode": "agent_only",
-        "bundle_type": "temporal_intelligence",
-        "payment_networks": ["Polygon USDC", "XRPL"],
-        "primary_payment_network": "Polygon USDC",
-        "legacy_payment_network": "XRPL",
-        "payment_endpoints": {
-            "usdc_request": "/payments/usdc/request",
-            "usdc_verify": "/payments/usdc/verify",
-            "usdc_access": "/payments/usdc/access",
-            "usdc_bundle": "/payments/usdc/bundle"
-        },
-        "machine_readable": True,
-        "history": "enabled",
-        "signal_count": 16,
-        "update_frequency": "5_minutes",
-        "packages_endpoint": "/packages",
-        "discovery": {
-            "refinery_json": "/public/refinery.json",
-            "agent_manifest": "/public/agent_manifest.json",
-            "llms_txt": "/public/llms.txt"
+    try:
+        return build_meta_from_registry()
+    except Exception:
+        return {
+            "platform": "Refinery",
+            "node": "Refinery-01",
+            "status": "degraded",
+            "registry_loaded": False,
+            "error": "registry_load_failed",
+            "packages_endpoint": "/packages"
         }
-    }
 @app.get("/payments/usdc/request")
 async def usdc_payment_request(bundle_id: str = None, buyer_id: str = "anonymous"):
     if not bundle_id:

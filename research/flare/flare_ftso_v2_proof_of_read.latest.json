@@ -1,0 +1,68 @@
+{
+  "ok": true,
+  "network": {
+    "name": "Flare Mainnet",
+    "rpc_url": "https://flare-api.flare.network/ext/C/rpc",
+    "chain_id_expected": 14
+  },
+  "sources": {
+    "contract_path": "Flare Contract Registry -> FtsoV2",
+    "registry_address": "0xaD67FE66660Fb8dFE9d6b1b4240d8650e30F6019",
+    "registry_contract_name": "FtsoV2",
+    "feed_ids": {
+      "FLR/USD": "0x01464c522f55534400000000000000000000000000",
+      "XRP/USD": "0x015852502f55534400000000000000000000000000"
+    }
+  },
+  "assumptions": [
+    "Registry contract name \"FtsoV2\" is assumed from Flare docs/examples and may need adjustment if Flare renames the registry key.",
+    "Feed IDs are taken from the official Flare feed docs."
+  ],
+  "timestamp": 1780884989,
+  "block_number": 62476474,
+  "registry_resolution": {
+    "registry_address": "0xaD67FE66660Fb8dFE9d6b1b4240d8650e30F6019",
+    "registry_method_signature": "getContractAddressByName(string)",
+    "registry_method_selector": "0x82760fca",
+    "registry_contract_name": "FtsoV2",
+    "resolved_address": "0x7bde3df0624114edb3a67dfe6753e62f4e7c1d20",
+    "assumption": "Contract name \"FtsoV2\" is used by Flare ContractRegistry as recommended by Flare docs and examples."
+  },
+  "ftso_read": {
+    "ftso_v2_address": "0x7bde3df0624114edb3a67dfe6753e62f4e7c1d20",
+    "getFeedsById": {
+      "signature": "getFeedsById(bytes21[])",
+      "selector": "0x4c375745",
+      "timestamp": 1780884990
+    },
+    "getFeedsByIdInWei": {
+      "signature": "getFeedsByIdInWei(bytes21[])",
+      "selector": "0xe3f5ccf5",
+      "timestamp": 1780884990
+    },
+    "feeds": [
+      {
+        "symbol": "FLR/USD",
+        "feed_id": "0x01464c522f55534400000000000000000000000000",
+        "value_raw": "71205",
+        "decimals": 7,
+        "value_wei": "7120500000000000",
+        "value_wei_computed_from_raw": "7120500000000000",
+        "timestamp": 1780884990,
+        "staleness_seconds": 1,
+        "source": "official Flare feed docs"
+      },
+      {
+        "symbol": "XRP/USD",
+        "feed_id": "0x015852502f55534400000000000000000000000000",
+        "value_raw": "1156420",
+        "decimals": 6,
+        "value_wei": "1156420000000000000",
+        "value_wei_computed_from_raw": "1156420000000000000",
+        "timestamp": 1780884990,
+        "staleness_seconds": 1,
+        "source": "official Flare feed docs"
+      }
+    ]
+  }
+}

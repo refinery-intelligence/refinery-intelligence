@@ -372,7 +372,7 @@
       "status": "active",
       "visibility": "public",
       "access": "paid_with_public_preview",
-      "bundle_version": "1.0.0",
+      "bundle_version": "1.1.0",
       "schema_version": "1.0.0",
       "category": "flare_temporal_intelligence",
       "cadence_seconds": 300,
@@ -390,15 +390,23 @@
         "flare_block_progression",
         "flr_market_state",
         "flare_defi_tvl",
-        "rpc_latency_elevated"
+        "rpc_latency_elevated",
+        "rpc_latency_spike",
+        "block_velocity_slow",
+        "flr_window_price_momentum"
       ],
-      "signal_count": 5,
+      "signal_count": 8,
       "intelligence_features": [
         "rpc_latency_monitoring",
+        "rolling_latency_baseline",
         "block_progression_tracking",
+        "block_velocity_estimation",
         "market_state_classification",
         "risk_state_classification",
-        "defi_tvl_context"
+        "defi_tvl_context",
+        "flr_price_momentum_tracking",
+        "source_status_tracking",
+        "intelligence_quality_scoring"
       ],
       "paid_payload_fields": [
         "bundle_id",
@@ -411,14 +419,17 @@
         "token_market",
         "defi",
         "signals",
-        "summary"
+        "summary",
+        "temporal",
+        "source_status",
+        "intelligence_quality"
       ],
       "sources": [
         "Flare"
       ],
       "claims_policy": "observable_only",
       "provenance_required": true,
-      "description": "Agent-ready Flare temporal intelligence bundle tracking Flare RPC latency, block progression, FLR market state, DeFi TVL context, risk state, and anomaly signals.",
+      "description": "Agent-ready Flare temporal intelligence bundle tracking Flare RPC latency, rolling latency baselines, block progression, block velocity, FLR market state, recent FLR price momentum, Flare DeFi TVL context, source health, intelligence quality, risk state, and anomaly signals. FTSO and FAssets layers are reserved for future integration and are not claimed as live in v1.1.",
       "payment": {
         "required": true,
         "asset": "USDC",

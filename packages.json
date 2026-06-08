@@ -338,7 +338,7 @@
     }
   },
   "flare-temporal-intel-v1": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "category": "flare_temporal_intelligence",
     "price_usd": 0.2,
     "payment_asset": "USDC",
@@ -346,20 +346,28 @@
     "legacy_payment_network": "XRPL",
     "delivery_format": "json",
     "update_frequency": "5_minutes",
-    "signal_count": 5,
+    "signal_count": 8,
     "signals": [
       "flare_rpc_latency",
       "flare_block_progression",
       "flr_market_state",
       "flare_defi_tvl",
-      "rpc_latency_elevated"
+      "rpc_latency_elevated",
+      "rpc_latency_spike",
+      "block_velocity_slow",
+      "flr_window_price_momentum"
     ],
     "intelligence_features": [
       "rpc_latency_monitoring",
+      "rolling_latency_baseline",
       "block_progression_tracking",
+      "block_velocity_estimation",
       "market_state_classification",
       "risk_state_classification",
-      "defi_tvl_context"
+      "defi_tvl_context",
+      "flr_price_momentum_tracking",
+      "source_status_tracking",
+      "intelligence_quality_scoring"
     ],
     "paid_payload_fields": [
       "bundle_id",
@@ -372,12 +380,15 @@
       "token_market",
       "defi",
       "signals",
-      "summary"
+      "summary",
+      "temporal",
+      "source_status",
+      "intelligence_quality"
     ],
     "supported_chains": [
       "Flare"
     ],
-    "description": "Agent-ready Flare temporal intelligence bundle tracking Flare RPC latency, block progression, FLR market state, DeFi TVL context, risk state, and anomaly signals.",
+    "description": "Agent-ready Flare temporal intelligence bundle tracking Flare RPC latency, rolling latency baselines, block progression, block velocity, FLR market state, recent FLR price momentum, Flare DeFi TVL context, source health, intelligence quality, risk state, and anomaly signals. FTSO and FAssets layers are reserved for future integration and are not claimed as live in v1.1.",
     "public_url": "/public/flare-temporal-intel-v1.json",
     "preview_url": "/public/flare-temporal-intel-v1.json",
     "public_url_role": "preview_only",

@@ -372,7 +372,7 @@
       "status": "active",
       "visibility": "public",
       "access": "paid_with_public_preview",
-      "bundle_version": "1.1.0",
+      "bundle_version": "1.2.0",
       "schema_version": "1.0.0",
       "category": "flare_temporal_intelligence",
       "cadence_seconds": 300,
@@ -393,9 +393,12 @@
         "rpc_latency_elevated",
         "rpc_latency_spike",
         "block_velocity_slow",
-        "flr_window_price_momentum"
+        "flr_window_price_momentum",
+        "ftso_feed_stale",
+        "ftso_feed_unavailable",
+        "oracle_health_degraded"
       ],
-      "signal_count": 8,
+      "signal_count": 11,
       "intelligence_features": [
         "rpc_latency_monitoring",
         "rolling_latency_baseline",
@@ -405,6 +408,8 @@
         "risk_state_classification",
         "defi_tvl_context",
         "flr_price_momentum_tracking",
+        "ftso_v2_oracle_feed_monitoring",
+        "ftso_feed_freshness_tracking",
         "source_status_tracking",
         "intelligence_quality_scoring"
       ],
@@ -418,18 +423,19 @@
         "network",
         "token_market",
         "defi",
-        "signals",
-        "summary",
+        "oracle",
         "temporal",
         "source_status",
-        "intelligence_quality"
+        "intelligence_quality",
+        "signals",
+        "summary"
       ],
       "sources": [
         "Flare"
       ],
       "claims_policy": "observable_only",
       "provenance_required": true,
-      "description": "Agent-ready Flare temporal intelligence bundle tracking Flare RPC latency, rolling latency baselines, block progression, block velocity, FLR market state, recent FLR price momentum, Flare DeFi TVL context, source health, intelligence quality, risk state, and anomaly signals. FTSO and FAssets layers are reserved for future integration and are not claimed as live in v1.1.",
+      "description": "Agent-ready Flare temporal intelligence bundle tracking Flare RPC latency, rolling latency baselines, block progression, block velocity, FLR market state, recent FLR price momentum, Flare DeFi TVL context, live Flare FTSOv2 oracle feeds, source health, intelligence quality, risk state, and anomaly signals. FAssets layers are reserved for future integration and are not claimed as live in v1.2.",
       "payment": {
         "required": true,
         "asset": "USDC",

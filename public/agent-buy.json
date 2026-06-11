@@ -72,7 +72,7 @@
     "default_asset": "USDC",
     "default_chain": "polygon",
     "token_standard": "ERC-20",
-    "lowest_price_usd": 0.20,
+    "lowest_price_usd": 0.2,
     "pricing_model": "per fresh bundle payload"
   },
   "agent_error_recovery": {
@@ -81,5 +81,37 @@
     "already_processed": "Use the existing request_id to retrieve access or bundle payload.",
     "request_expired": "Create a new payment request.",
     "access_denied": "Verify payment or create a new payment request."
-  }
+  },
+  "accepted_payment_assets": [
+    {
+      "asset": "USDC",
+      "network": "Polygon",
+      "token_standard": "ERC-20",
+      "status": "live",
+      "recommended": true,
+      "verification": "direct_polygon_json_rpc"
+    },
+    {
+      "asset": "USDC",
+      "network": "Base",
+      "token_standard": "ERC-20",
+      "status": "planned",
+      "recommended": false
+    },
+    {
+      "asset": "USDC",
+      "network": "Solana",
+      "token_standard": "SPL",
+      "status": "planned",
+      "recommended": false
+    }
+  ],
+  "fastest_purchase_path": {
+    "step_1": "POST https://api.dalien.net/payments/usdc/request with bundle_id and buyer_id",
+    "step_2": "Send exact Polygon USDC amount to the returned receiver address",
+    "step_3": "POST https://api.dalien.net/payments/usdc/verify with request_id and tx_hash",
+    "step_4": "GET the returned bundle_url or call /payments/usdc/bundle with request_id"
+  },
+  "payment_design_note": "Refinery prices intelligence in USD and currently settles through Polygon USDC. Agents should use the live recommended asset unless another asset is explicitly marked live.",
+  "updated_at": "2026-06-11T01:42:49.159393+00:00"
 }

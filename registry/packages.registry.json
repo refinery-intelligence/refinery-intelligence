@@ -89,7 +89,36 @@
       "purchase_entrypoint": "https://api.dalien.net/agent-buy.json",
       "price_usd": 0.2,
       "payment_asset": "USDC",
-      "payment_network": "Polygon"
+      "payment_network": "Polygon",
+      "accepted_payment_assets": [
+        {
+          "asset": "USDC",
+          "network": "Polygon",
+          "token_standard": "ERC-20",
+          "status": "live",
+          "recommended": true,
+          "verification": "direct_polygon_json_rpc"
+        },
+        {
+          "asset": "USDC",
+          "network": "Base",
+          "token_standard": "ERC-20",
+          "status": "planned",
+          "recommended": false
+        },
+        {
+          "asset": "USDC",
+          "network": "Solana",
+          "token_standard": "SPL",
+          "status": "planned",
+          "recommended": false
+        }
+      ],
+      "recommended_payment_asset": {
+        "asset": "USDC",
+        "network": "Polygon",
+        "token_standard": "ERC-20"
+      }
     },
     {
       "bundle_id": "solana-temporal-intel-v1",
@@ -180,7 +209,36 @@
       "purchase_entrypoint": "https://api.dalien.net/agent-buy.json",
       "price_usd": 0.2,
       "payment_asset": "USDC",
-      "payment_network": "Polygon"
+      "payment_network": "Polygon",
+      "accepted_payment_assets": [
+        {
+          "asset": "USDC",
+          "network": "Polygon",
+          "token_standard": "ERC-20",
+          "status": "live",
+          "recommended": true,
+          "verification": "direct_polygon_json_rpc"
+        },
+        {
+          "asset": "USDC",
+          "network": "Base",
+          "token_standard": "ERC-20",
+          "status": "planned",
+          "recommended": false
+        },
+        {
+          "asset": "USDC",
+          "network": "Solana",
+          "token_standard": "SPL",
+          "status": "planned",
+          "recommended": false
+        }
+      ],
+      "recommended_payment_asset": {
+        "asset": "USDC",
+        "network": "Polygon",
+        "token_standard": "ERC-20"
+      }
     },
     {
       "bundle_id": "xrpl-settlement-intel-v1",
@@ -274,7 +332,36 @@
       "purchase_entrypoint": "https://api.dalien.net/agent-buy.json",
       "price_usd": 0.2,
       "payment_asset": "USDC",
-      "payment_network": "Polygon"
+      "payment_network": "Polygon",
+      "accepted_payment_assets": [
+        {
+          "asset": "USDC",
+          "network": "Polygon",
+          "token_standard": "ERC-20",
+          "status": "live",
+          "recommended": true,
+          "verification": "direct_polygon_json_rpc"
+        },
+        {
+          "asset": "USDC",
+          "network": "Base",
+          "token_standard": "ERC-20",
+          "status": "planned",
+          "recommended": false
+        },
+        {
+          "asset": "USDC",
+          "network": "Solana",
+          "token_standard": "SPL",
+          "status": "planned",
+          "recommended": false
+        }
+      ],
+      "recommended_payment_asset": {
+        "asset": "USDC",
+        "network": "Polygon",
+        "token_standard": "ERC-20"
+      }
     },
     {
       "bundle_id": "defi-flow-intel-v1",
@@ -364,7 +451,36 @@
       "purchase_entrypoint": "https://api.dalien.net/agent-buy.json",
       "price_usd": 0.2,
       "payment_asset": "USDC",
-      "payment_network": "Polygon"
+      "payment_network": "Polygon",
+      "accepted_payment_assets": [
+        {
+          "asset": "USDC",
+          "network": "Polygon",
+          "token_standard": "ERC-20",
+          "status": "live",
+          "recommended": true,
+          "verification": "direct_polygon_json_rpc"
+        },
+        {
+          "asset": "USDC",
+          "network": "Base",
+          "token_standard": "ERC-20",
+          "status": "planned",
+          "recommended": false
+        },
+        {
+          "asset": "USDC",
+          "network": "Solana",
+          "token_standard": "SPL",
+          "status": "planned",
+          "recommended": false
+        }
+      ],
+      "recommended_payment_asset": {
+        "asset": "USDC",
+        "network": "Polygon",
+        "token_standard": "ERC-20"
+      }
     },
     {
       "bundle_id": "xrp-etf-temporal-intel-v1",
@@ -476,7 +592,36 @@
       "purchase_entrypoint": "https://api.dalien.net/agent-buy.json",
       "price_usd": 0.25,
       "payment_asset": "USDC",
-      "payment_network": "Polygon"
+      "payment_network": "Polygon",
+      "accepted_payment_assets": [
+        {
+          "asset": "USDC",
+          "network": "Polygon",
+          "token_standard": "ERC-20",
+          "status": "live",
+          "recommended": true,
+          "verification": "direct_polygon_json_rpc"
+        },
+        {
+          "asset": "USDC",
+          "network": "Base",
+          "token_standard": "ERC-20",
+          "status": "planned",
+          "recommended": false
+        },
+        {
+          "asset": "USDC",
+          "network": "Solana",
+          "token_standard": "SPL",
+          "status": "planned",
+          "recommended": false
+        }
+      ],
+      "recommended_payment_asset": {
+        "asset": "USDC",
+        "network": "Polygon",
+        "token_standard": "ERC-20"
+      }
     },
     {
       "bundle_id": "flare-temporal-intel-v1",
@@ -578,9 +723,39 @@
       "purchase_entrypoint": "https://api.dalien.net/agent-buy.json",
       "price_usd": 0.2,
       "payment_asset": "USDC",
-      "payment_network": "Polygon"
+      "payment_network": "Polygon",
+      "accepted_payment_assets": [
+        {
+          "asset": "USDC",
+          "network": "Polygon",
+          "token_standard": "ERC-20",
+          "status": "live",
+          "recommended": true,
+          "verification": "direct_polygon_json_rpc"
+        },
+        {
+          "asset": "USDC",
+          "network": "Base",
+          "token_standard": "ERC-20",
+          "status": "planned",
+          "recommended": false
+        },
+        {
+          "asset": "USDC",
+          "network": "Solana",
+          "token_standard": "SPL",
+          "status": "planned",
+          "recommended": false
+        }
+      ],
+      "recommended_payment_asset": {
+        "asset": "USDC",
+        "network": "Polygon",
+        "token_standard": "ERC-20"
+      }
     }
   ],
   "agent_conversion_metadata_updated_at": "2026-06-11T00:20:23.184353+00:00",
-  "commercial_metadata_synced_at": "2026-06-11T00:24:22.689840+00:00"
+  "commercial_metadata_synced_at": "2026-06-11T00:24:22.689840+00:00",
+  "payment_asset_metadata_updated_at": "2026-06-11T01:42:49.161781+00:00"
 }

@@ -6,7 +6,7 @@ import json
 from vault.payments.usdc.verify_polygon_rpc_tx import verify_transaction
 from vault.payments.usdc.verifier import create_payment_request
 from vault.payments.usdc.check_access import check_access
-from vault.payments.usdc.serve_bundle import serve_bundle
+from vault.payments.usdc.serve_bundle import serve_bundle, serve_bundle_response
 
 app = FastAPI(
     docs_url=None,
@@ -536,7 +536,7 @@ async def usdc_payment_bundle(request_id: str = None):
             "usage": "/payments/usdc/bundle?request_id=REQUEST_ID"
         }
 
-    return serve_bundle(request_id)
+    return serve_bundle_response(request_id)
 
 
 @app.get("/payments/usdc/verify")

@@ -1,4 +1,5 @@
 import json
+import sys
 import time
 import urllib.request
 from datetime import datetime, timezone
@@ -56,20 +57,29 @@ def write_record(record):
         f.write(json.dumps(record) + "\n")
 
 
+def collect_once():
+    slot, latency = rpc_call("getSlot")
+
+    record = {
+        "timestamp": now_iso(),
+        "solana_current_slot": slot,
+        "rpc_latency_seconds": latency
+    }
+
+    write_record(record)
+
+    print(json.dumps(record, indent=2))
+    return record
+
+
 def main():
+    if "--once" in sys.argv:
+        collect_once()
+        return
+
     while True:
         try:
-            slot, latency = rpc_call("getSlot")
-
-            record = {
-                "timestamp": now_iso(),
-                "solana_current_slot": slot,
-                "rpc_latency_seconds": latency
-            }
-
-            write_record(record)
-
-            print(record)
+            collect_once()
 
         except Exception as e:
             print("ERROR:", e)

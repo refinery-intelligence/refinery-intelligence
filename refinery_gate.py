@@ -361,7 +361,36 @@ async def root():
 
     cards = []
 
-    for package_id, package in packages.items():
+    if isinstance(packages, dict) and isinstance(packages.get("bundles"), dict):
+        package_items = packages["bundles"].items()
+    elif isinstance(packages, dict) and isinstance(packages.get("bundles"), list):
+        package_items = [
+            (
+                package.get("bundle_id") or package.get("id") or f"package_{i}",
+                package
+            )
+            for i, package in enumerate(packages["bundles"])
+            if isinstance(package, dict)
+        ]
+    elif isinstance(packages, dict):
+        package_items = [
+            (package_id, package)
+            for package_id, package in packages.items()
+            if isinstance(package, dict)
+        ]
+    elif isinstance(packages, list):
+        package_items = [
+            (
+                package.get("bundle_id") or package.get("id") or f"package_{i}",
+                package
+            )
+            for i, package in enumerate(packages)
+            if isinstance(package, dict)
+        ]
+    else:
+        package_items = []
+
+    for package_id, package in package_items:
         cards.append({
             "package_id": package_id,
             "name": package.get("name", package_id),

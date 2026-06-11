@@ -57,7 +57,26 @@
       "preview": "Public URL returns redacted discovery preview only.",
       "full_payload": "Full bundle payload is delivered only after payment verification.",
       "verification_required": true
-    }
+    },
+    "agent_use_cases": [
+      "Assess liquidation pressure",
+      "Monitor oracle divergence",
+      "Detect composite liquidation-risk escalation"
+    ],
+    "buy_when": [
+      "before leverage-sensitive DeFi actions",
+      "when liquidation pressure or oracle divergence may affect execution",
+      "when an agent needs current liquidation-risk context"
+    ],
+    "value_frame": {
+      "intended_decision_value": "risk avoidance, liquidation monitoring, leverage-sensitive execution",
+      "freshness": "300_seconds",
+      "payload_format": "json",
+      "human_review_required": false,
+      "cost_usd": 0.2
+    },
+    "agent_purchase_ready": true,
+    "purchase_entrypoint": "https://api.dalien.net/agent-buy.json"
   },
   "solana-temporal-intel-v1": {
     "version": "1.0.0",
@@ -118,7 +137,27 @@
       "preview": "Public URL returns redacted discovery preview only.",
       "full_payload": "Full bundle payload is delivered only after payment verification.",
       "verification_required": true
-    }
+    },
+    "agent_use_cases": [
+      "Check Solana network health before transaction execution",
+      "Detect RPC latency degradation",
+      "Evaluate slot velocity and anomaly state",
+      "Decide whether to act now, delay, retry, or reroute"
+    ],
+    "buy_when": [
+      "before submitting a time-sensitive Solana transaction",
+      "when RPC latency may affect execution",
+      "when an agent needs current machine-readable Solana network telemetry"
+    ],
+    "value_frame": {
+      "intended_decision_value": "transaction timing, network health, routing, anomaly detection",
+      "freshness": "60_seconds",
+      "payload_format": "json",
+      "human_review_required": false,
+      "cost_usd": 0.2
+    },
+    "agent_purchase_ready": true,
+    "purchase_entrypoint": "https://api.dalien.net/agent-buy.json"
   },
   "xrpl-settlement-intel-v1": {
     "version": "1.1.0",
@@ -183,7 +222,26 @@
       "preview": "Public URL returns redacted discovery preview only.",
       "full_payload": "Full bundle payload is delivered only after payment verification.",
       "verification_required": true
-    }
+    },
+    "agent_use_cases": [
+      "Check XRPL settlement rail health",
+      "Monitor validated ledger progression",
+      "Assess payment rail confidence before routing value"
+    ],
+    "buy_when": [
+      "before relying on XRPL for settlement-sensitive activity",
+      "when ledger progression or congestion state matters",
+      "when an agent needs structured XRPL settlement telemetry"
+    ],
+    "value_frame": {
+      "intended_decision_value": "settlement timing, rail confidence, ledger progression monitoring",
+      "freshness": "300_seconds",
+      "payload_format": "json",
+      "human_review_required": false,
+      "cost_usd": 0.2
+    },
+    "agent_purchase_ready": true,
+    "purchase_entrypoint": "https://api.dalien.net/agent-buy.json"
   },
   "defi-flow-intel-v1": {
     "version": "1.0.0",
@@ -252,7 +310,26 @@
       "preview": "Public URL returns redacted discovery preview only.",
       "full_payload": "Full bundle payload is delivered only after payment verification.",
       "verification_required": true
-    }
+    },
+    "agent_use_cases": [
+      "Track DeFi liquidity concentration",
+      "Compare chain, protocol, and stablecoin flow conditions",
+      "Assess where capital is concentrated across DeFi"
+    ],
+    "buy_when": [
+      "before making DeFi allocation or routing decisions",
+      "when stablecoin, chain, or protocol concentration matters",
+      "when an agent needs current DeFi flow context"
+    ],
+    "value_frame": {
+      "intended_decision_value": "liquidity routing, market structure awareness, capital concentration analysis",
+      "freshness": "300_seconds",
+      "payload_format": "json",
+      "human_review_required": false,
+      "cost_usd": 0.2
+    },
+    "agent_purchase_ready": true,
+    "purchase_entrypoint": "https://api.dalien.net/agent-buy.json"
   },
   "xrp-etf-temporal-intel-v1": {
     "version": "1.3.0",
@@ -335,7 +412,26 @@
       "preview": "Public URL returns redacted discovery preview only.",
       "full_payload": "Full bundle payload is delivered only after payment verification.",
       "verification_required": true
-    }
+    },
+    "agent_use_cases": [
+      "Monitor XRP ETF readiness signals",
+      "Track issuer, filing, market, and XRPL contextual layers",
+      "Avoid unsupported ETF approval claims using guardrail fields"
+    ],
+    "buy_when": [
+      "when XRP ETF readiness context matters",
+      "when an agent needs structured issuer and market signal context",
+      "when claim guardrails are needed around ETF-related events"
+    ],
+    "value_frame": {
+      "intended_decision_value": "ETF readiness monitoring, claim risk reduction, market-event context",
+      "freshness": "300_seconds",
+      "payload_format": "json",
+      "human_review_required": false,
+      "cost_usd": 0.25
+    },
+    "agent_purchase_ready": true,
+    "purchase_entrypoint": "https://api.dalien.net/agent-buy.json"
   },
   "flare-temporal-intel-v1": {
     "version": "1.2.0",
@@ -408,6 +504,26 @@
       "preview": "Public URL returns redacted discovery preview only.",
       "full_payload": "Full bundle payload is delivered only after payment verification.",
       "verification_required": true
-    }
-  }
+    },
+    "agent_use_cases": [
+      "Monitor Flare oracle state",
+      "Read FTSOv2-derived FLR/USD and XRP/USD signal context",
+      "Assess Flare ecosystem temporal conditions"
+    ],
+    "buy_when": [
+      "when oracle freshness matters",
+      "when an agent needs Flare FTSOv2 proof-of-read context",
+      "when comparing Flare market and oracle conditions"
+    ],
+    "value_frame": {
+      "intended_decision_value": "oracle monitoring, market context, temporal ecosystem state",
+      "freshness": "300_seconds",
+      "payload_format": "json",
+      "human_review_required": false,
+      "cost_usd": 0.2
+    },
+    "agent_purchase_ready": true,
+    "purchase_entrypoint": "https://api.dalien.net/agent-buy.json"
+  },
+  "agent_conversion_metadata_updated_at": "2026-06-11T00:20:23.183599+00:00"
 }

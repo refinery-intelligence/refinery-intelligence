@@ -1,0 +1,85 @@
+{
+  "service": "Refinery Intelligence",
+  "version": "1.0.0",
+  "purpose": "Paid machine-readable temporal intelligence bundles for autonomous agents.",
+  "machine_readable": true,
+  "human_review_required": false,
+  "primary_value": "Refinery lets autonomous agents buy fresh structured intelligence before they act.",
+  "canonical_base_url": "https://api.dalien.net",
+  "discovery": {
+    "package_registry": "https://api.dalien.net/packages",
+    "metadata": "https://api.dalien.net/meta",
+    "openapi": "https://api.dalien.net/openapi.json",
+    "agent_manifest": "https://api.dalien.net/public/agent_manifest.json",
+    "refinery_manifest": "https://api.dalien.net/public/refinery.json",
+    "llms": "https://api.dalien.net/public/llms.txt"
+  },
+  "purchase_flow": [
+    {
+      "step": 1,
+      "action": "list_packages",
+      "method": "GET",
+      "url": "https://api.dalien.net/packages",
+      "result": "Agent selects a bundle_id and reads price/payment metadata."
+    },
+    {
+      "step": 2,
+      "action": "create_payment_request",
+      "method": "POST",
+      "url": "https://api.dalien.net/payments/usdc/request",
+      "body": {
+        "bundle_id": "solana-temporal-intel-v1",
+        "buyer_id": "agent-or-client-id"
+      },
+      "result": "Returns request_id, amount, receiver, asset, chain, expiry, and verification URL."
+    },
+    {
+      "step": 3,
+      "action": "submit_payment",
+      "chain": "polygon",
+      "asset": "USDC",
+      "result": "Agent sends the required Polygon USDC transfer to the returned receiver address."
+    },
+    {
+      "step": 4,
+      "action": "verify_payment",
+      "method": "POST",
+      "url": "https://api.dalien.net/payments/usdc/verify",
+      "body": {
+        "request_id": "returned-request-id",
+        "tx_hash": "polygon-transaction-hash"
+      },
+      "result": "If valid, Refinery creates an access grant."
+    },
+    {
+      "step": 5,
+      "action": "retrieve_paid_payload",
+      "method": "GET",
+      "url": "https://api.dalien.net/payments/usdc/bundle?request_id=returned-request-id",
+      "result": "Returns the paid machine-readable intelligence payload."
+    }
+  ],
+  "recommended_first_bundle": {
+    "bundle_id": "solana-temporal-intel-v1",
+    "why": "Useful before time-sensitive Solana transaction execution, routing, or infrastructure decisions.",
+    "buy_when": [
+      "before submitting a time-sensitive Solana transaction",
+      "when RPC latency may affect execution",
+      "when deciding whether to delay, retry, or reroute"
+    ]
+  },
+  "payment": {
+    "default_asset": "USDC",
+    "default_chain": "polygon",
+    "token_standard": "ERC-20",
+    "lowest_price_usd": 0.20,
+    "pricing_model": "per fresh bundle payload"
+  },
+  "agent_error_recovery": {
+    "payment_required": "Create a payment request, submit USDC payment, then verify.",
+    "payment_pending": "Retry verification after a short delay.",
+    "already_processed": "Use the existing request_id to retrieve access or bundle payload.",
+    "request_expired": "Create a new payment request.",
+    "access_denied": "Verify payment or create a new payment request."
+  }
+}

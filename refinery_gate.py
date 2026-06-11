@@ -32,6 +32,7 @@ def json_file_response(relative_path: str):
             }
         )
 
+
     return FileResponse(
         path,
         media_type="application/json",
@@ -422,6 +423,11 @@ async def public_file(filename: str):
         return {"error": "public_file_not_found", "file": filename}
 
     return FileResponse(path)
+
+@app.get("/agent-buy.json")
+@app.head("/agent-buy.json")
+def agent_buy():
+    return json_file_response("public/agent-buy.json")
 
 @app.get("/packages")
 async def packages():

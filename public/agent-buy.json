@@ -9,7 +9,7 @@
   "discovery": {
     "package_registry": "https://api.dalien.net/packages",
     "metadata": "https://api.dalien.net/meta",
-    "openapi": "https://api.dalien.net/openapi.json",
+    "openapi": "https://dalien.net/openapi.json",
     "agent_manifest": "https://api.dalien.net/public/agent_manifest.json",
     "refinery_manifest": "https://api.dalien.net/public/refinery.json",
     "llms": "https://api.dalien.net/public/llms.txt"
@@ -25,12 +25,8 @@
     {
       "step": 2,
       "action": "create_payment_request",
-      "method": "POST",
-      "url": "https://api.dalien.net/payments/usdc/request",
-      "body": {
-        "bundle_id": "solana-temporal-intel-v1",
-        "buyer_id": "agent-or-client-id"
-      },
+      "method": "GET",
+      "url": "https://api.dalien.net/payments/usdc/request?bundle_id=solana-temporal-intel-v1&buyer_id=agent-or-client-id",
       "result": "Returns request_id, amount, receiver, asset, chain, expiry, and verification URL."
     },
     {
@@ -43,12 +39,8 @@
     {
       "step": 4,
       "action": "verify_payment",
-      "method": "POST",
-      "url": "https://api.dalien.net/payments/usdc/verify",
-      "body": {
-        "request_id": "returned-request-id",
-        "tx_hash": "polygon-transaction-hash"
-      },
+      "method": "GET",
+      "url": "https://api.dalien.net/payments/usdc/verify?request_id=returned-request-id&tx_hash=polygon-transaction-hash",
       "result": "If valid, Refinery creates an access grant."
     },
     {
@@ -107,11 +99,11 @@
     }
   ],
   "fastest_purchase_path": {
-    "step_1": "POST https://api.dalien.net/payments/usdc/request with bundle_id and buyer_id",
+    "step_1": "GET https://api.dalien.net/payments/usdc/request?bundle_id=BUNDLE_ID&buyer_id=BUYER_ID",
     "step_2": "Send exact Polygon USDC amount to the returned receiver address",
-    "step_3": "POST https://api.dalien.net/payments/usdc/verify with request_id and tx_hash",
-    "step_4": "GET the returned bundle_url or call /payments/usdc/bundle with request_id"
+    "step_3": "GET https://api.dalien.net/payments/usdc/verify?request_id=REQUEST_ID&tx_hash=TX_HASH",
+    "step_4": "GET the returned bundle_url or call /payments/usdc/bundle?request_id=REQUEST_ID"
   },
   "payment_design_note": "Refinery prices intelligence in USD and currently settles through Polygon USDC. Agents should use the live recommended asset unless another asset is explicitly marked live.",
-  "updated_at": "2026-06-11T01:42:49.159393+00:00"
+  "updated_at": "2026-06-14T12:44:43.256679+10:00"
 }

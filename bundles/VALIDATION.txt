@@ -1,0 +1,45 @@
+Refinery bundle-page patch validation
+======================================
+
+Execution context
+-----------------
+The execution container could not resolve github.com, so a native git clone was not possible.
+Authoritative registry, agent-buy, sitemap, and preview facts were retrieved through the public
+GitHub/live HTTP surfaces. The generator was validated locally against a fixture containing only
+the six canonical public-safe registry records. The fixture is not included in the apply-ready patch.
+
+Commands and results
+--------------------
+python3 scripts/generate_bundle_pages.py --check
+check-ok
+validated_bundles=6
+generated_pages=6
+sitemap_entries=15
+
+python3 scripts/generate_bundle_pages.py
+write-ok
+generated_pages=6
+
+Additional validation
+---------------------
+- 6 generated HTML files are non-empty.
+- Each page contains its canonical dalien.net URL.
+- Each page contains its exact bundle ID.
+- Each page documents POST /payments/usdc/request.
+- Each page renders the intentionally minimal redacted preview.
+- Exactly one Dataset JSON-LD block exists per page.
+- All JSON-LD blocks parse as valid JSON.
+- public/sitemap.xml parses as valid XML.
+- The sitemap contains all six dalien.net/bundles/<bundle-id> URLs.
+- A second generator run produced deterministic output.
+- No deployment, service restart, nginx, Cloudflare, systemd, payment, API-route,
+  bundle-generator, or paid-payload changes were performed.
+
+Required verification after applying to the real repository
+------------------------------------------------------------
+python3 scripts/generate_bundle_pages.py --check
+python3 scripts/generate_bundle_pages.py
+git diff --check
+git status --short
+
+Run the generator twice and confirm the second run creates no diff.

@@ -1,0 +1,14 @@
+{
+  "bundle_id": "flare-temporal-intel-v1",
+  "status": "preview_only",
+  "access": "paid_full_payload_required",
+  "public_payload": "redacted",
+  "payment_required": true,
+  "message": "This is a public discovery preview only.\nFull temporal intelligence is available only after payment verification.",
+  "paid_access_flow": {
+    "step_1": "Read package metadata from /packages or /packages.json",
+    "step_2": "Submit required payment",
+    "step_3": "Submit transaction hash for verification",
+    "step_4": "Receive full bundle payload after verified payment"
+  }
+}

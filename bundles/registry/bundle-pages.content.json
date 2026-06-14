@@ -1,0 +1,249 @@
+{
+  "schema_version": "1.0.0",
+  "bundles": [
+    {
+      "bundle_id": "defi-liquidation-intel-v1",
+      "title": "DeFi Liquidation Intelligence",
+      "summary": "Temporal liquidation-pressure, oracle-divergence, and composite-risk context for autonomous risk and execution systems.",
+      "measures": [
+        "Oracle divergence",
+        "Liquidation-pressure proxies",
+        "Composite liquidation risk",
+        "Escalation events and temporal urgency"
+      ],
+      "why_agents_buy": [
+        "Assess liquidation pressure before leverage-sensitive actions.",
+        "Use oracle divergence as an execution-caution input.",
+        "Detect worsening composite liquidation risk without parsing fragmented source feeds."
+      ],
+      "source_provenance": [
+        {
+          "source_type": "Ethereum",
+          "role": "observable DeFi market context",
+          "status": "live"
+        },
+        {
+          "source_type": "Arbitrum",
+          "role": "observable DeFi market context",
+          "status": "live"
+        },
+        {
+          "source_type": "Base",
+          "role": "observable DeFi market context",
+          "status": "live"
+        }
+      ],
+      "schema_highlights": [
+        "Signal classifications",
+        "Confidence and temporal urgency",
+        "Agent action guidance",
+        "Trend, anomaly, and risk-delta context"
+      ],
+      "known_limitations": [
+        "Signals are observational intelligence, not guaranteed liquidation outcomes.",
+        "The public preview does not expose paid signal values or detector internals."
+      ]
+    },
+    {
+      "bundle_id": "solana-temporal-intel-v1",
+      "title": "Solana Temporal Intelligence",
+      "summary": "Fresh Solana network-state intelligence for timing-sensitive transaction, routing, and infrastructure decisions.",
+      "measures": [
+        "Validated slot progression",
+        "Slot velocity",
+        "RPC latency and latency anomalies",
+        "Temporal network-health state"
+      ],
+      "why_agents_buy": [
+        "Decide whether to act now, delay, retry, or reroute.",
+        "Check network conditions before submitting time-sensitive transactions.",
+        "Replace blind retry logic with current machine-readable telemetry."
+      ],
+      "source_provenance": [
+        {
+          "source_type": "Solana",
+          "role": "network and RPC telemetry",
+          "status": "live"
+        }
+      ],
+      "schema_highlights": [
+        "Slot and velocity context",
+        "RPC latency state",
+        "Network-health classification",
+        "Severity and agent action guidance"
+      ],
+      "known_limitations": [
+        "RPC observations reflect the configured observation path.",
+        "The public preview intentionally omits paid telemetry and scoring depth."
+      ]
+    },
+    {
+      "bundle_id": "xrpl-settlement-intel-v1",
+      "title": "XRPL Settlement Intelligence",
+      "summary": "Validated-ledger progression and settlement-rail health for autonomous routing and monitoring systems.",
+      "measures": [
+        "Validated ledger progression",
+        "Settlement velocity",
+        "Payment-rail health",
+        "Congestion and routing-watch state"
+      ],
+      "why_agents_buy": [
+        "Evaluate settlement confidence before routing value.",
+        "Monitor ledger progression and congestion state.",
+        "Use structured rail-health context instead of raw ledger polling alone."
+      ],
+      "source_provenance": [
+        {
+          "source_type": "XRPL",
+          "role": "validated ledger telemetry",
+          "status": "live"
+        }
+      ],
+      "schema_highlights": [
+        "Ledger progression and velocity",
+        "Settlement latency and freshness",
+        "Network and congestion state",
+        "Confidence and action guidance"
+      ],
+      "known_limitations": [
+        "Rail-health intelligence does not guarantee transaction settlement.",
+        "The public preview intentionally excludes paid settlement telemetry."
+      ]
+    },
+    {
+      "bundle_id": "defi-flow-intel-v1",
+      "title": "DeFi Flow Intelligence",
+      "summary": "Cross-source DeFi liquidity, TVL, volume, fee, yield, and concentration context for autonomous allocation and monitoring.",
+      "measures": [
+        "Stablecoin liquidity concentration",
+        "Chain and protocol TVL concentration",
+        "DEX volume and fee concentration",
+        "Yield-opportunity context and market structure"
+      ],
+      "why_agents_buy": [
+        "Track where liquidity and activity are concentrating.",
+        "Improve allocation and routing decisions with normalized cross-source context.",
+        "Detect crowding or structural fragility without integrating every source independently."
+      ],
+      "source_provenance": [
+        {
+          "source_type": "stablecoins",
+          "role": "stablecoin supply context",
+          "status": "live"
+        },
+        {
+          "source_type": "chains",
+          "role": "chain TVL context",
+          "status": "live"
+        },
+        {
+          "source_type": "protocols",
+          "role": "protocol TVL context",
+          "status": "live"
+        },
+        {
+          "source_type": "dex_volumes",
+          "role": "DEX activity context",
+          "status": "live"
+        },
+        {
+          "source_type": "fees",
+          "role": "fee-generation context",
+          "status": "live"
+        },
+        {
+          "source_type": "yields",
+          "role": "yield-opportunity context",
+          "status": "live"
+        }
+      ],
+      "schema_highlights": [
+        "Source-health tracking",
+        "Liquidity-concentration scoring",
+        "Market-structure classification",
+        "Agent decision summary"
+      ],
+      "known_limitations": [
+        "Source availability can affect cross-source completeness.",
+        "The public preview intentionally omits paid concentration values and classifications."
+      ]
+    },
+    {
+      "bundle_id": "xrp-etf-temporal-intel-v1",
+      "title": "XRP ETF Temporal Intelligence",
+      "summary": "XRP market, XRPL, issuer-watch, holdings, flow, and claim-guardrail context for autonomous monitoring systems.",
+      "measures": [
+        "XRP market and XRPL context",
+        "Issuer-watch and ETF-readiness signals",
+        "AUM and holdings detection",
+        "Claim guardrails and temporal deltas"
+      ],
+      "why_agents_buy": [
+        "Monitor a high-noise domain with explicit claim guardrails.",
+        "Combine market, network, issuer, and flow context in one machine-readable payload.",
+        "Reduce false confidence around unsupported ETF-related claims."
+      ],
+      "source_provenance": [
+        {
+          "source_type": "XRPL",
+          "role": "network telemetry context",
+          "status": "live"
+        },
+        {
+          "source_type": "ETF and issuer monitoring",
+          "role": "upstream source set is not enumerated in public registry metadata",
+          "status": "limited"
+        }
+      ],
+      "schema_highlights": [
+        "Market and risk state",
+        "ETF flow and readiness state",
+        "Source-status and claim-guardrail layers",
+        "Temporal deltas and action priority"
+      ],
+      "known_limitations": [
+        "Public registry metadata does not enumerate every upstream ETF-related source.",
+        "The bundle does not claim approval or filing outcomes without observable evidence.",
+        "The public preview intentionally excludes paid issuer, holdings, and flow values."
+      ]
+    },
+    {
+      "bundle_id": "flare-temporal-intel-v1",
+      "title": "Flare Temporal Intelligence",
+      "summary": "Flare network, market, DeFi, and live FTSOv2 oracle context with explicit source-status guardrails.",
+      "measures": [
+        "RPC latency and rolling baselines",
+        "Block progression and velocity",
+        "FLR market and DeFi TVL context",
+        "FTSOv2 oracle freshness and health"
+      ],
+      "why_agents_buy": [
+        "Monitor Flare network and oracle conditions together.",
+        "Use FTSOv2 proof-of-read context before oracle-sensitive actions.",
+        "Consume explicit source-health and intelligence-quality state."
+      ],
+      "source_provenance": [
+        {
+          "source_type": "Flare",
+          "role": "network, market, DeFi, and FTSOv2 context",
+          "status": "live"
+        },
+        {
+          "source_type": "FAssets",
+          "role": "future integration",
+          "status": "reserved"
+        }
+      ],
+      "schema_highlights": [
+        "Network and market state",
+        "Oracle feed and freshness context",
+        "Source-status and intelligence-quality fields",
+        "Risk and anomaly signals"
+      ],
+      "known_limitations": [
+        "FAssets is reserved and is not claimed as live in version 1.2.",
+        "The public preview intentionally excludes paid oracle and temporal values."
+      ]
+    }
+  ]
+}

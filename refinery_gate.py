@@ -205,7 +205,15 @@ def build_meta_from_registry():
     for bundle in public_bundles:
         bundle_id = bundle.get("bundle_id")
         signals = bundle.get("signals", [])
-        signal_count = len(signals) if isinstance(signals, list) else 0
+
+        explicit_signal_count = bundle.get("signal_count")
+
+        if isinstance(explicit_signal_count, int) and explicit_signal_count >= 0:
+            signal_count = explicit_signal_count
+        elif isinstance(signals, list):
+            signal_count = len(signals)
+        else:
+            signal_count = 0
 
         if isinstance(bundle_id, str) and bundle_id:
             bundle_signal_counts[bundle_id] = signal_count

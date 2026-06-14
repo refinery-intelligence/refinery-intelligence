@@ -1,41 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://api.dalien.net/meta</loc>
-  </url>
-
-  <url>
-    <loc>https://api.dalien.net/packages</loc>
-  </url>
-
-  <url>
-    <loc>https://api.dalien.net/health</loc>
-  </url>
-
-  <url>
-    <loc>https://api.dalien.net/public/refinery.json</loc>
-  </url>
-
-  <url>
-    <loc>https://api.dalien.net/public/agent_manifest.json</loc>
-  </url>
-
-  <url>
-    <loc>https://api.dalien.net/public/llms.txt</loc>
-  </url>
-
-  <url>
-    <loc>https://api.dalien.net/bundles/defi-liquidation-intel-v1</loc>
-  </url>
-
-  <url>
-    <loc>https://api.dalien.net/bundles/solana-temporal-intel-v1</loc>
-  </url>
-
-  <url>
-    <loc>https://api.dalien.net/bundles/xrpl-settlement-intel-v1</loc>
-  </url>
-
-</urlset>
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:urlset xmlns:ns0="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <ns0:url>
+    <ns0:loc>https://dalien.net/</ns0:loc>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://dalien.net/refinery-docs.html</ns0:loc>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://dalien.net/refinery-packages.html</ns0:loc>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://dalien.net/refinery-agent-discovery.html</ns0:loc>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://dalien.net/refinery-crawler-manifest.html</ns0:loc>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://dalien.net/api-directory-listing.html</ns0:loc>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://dalien.net/api-product.json</ns0:loc>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://dalien.net/openapi.json</ns0:loc>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://dalien.net/bundles/solana-temporal-intel-v1/</ns0:loc>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://dalien.net/bundles/defi-liquidation-intel-v1/</ns0:loc>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://dalien.net/bundles/defi-flow-intel-v1/</ns0:loc>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://dalien.net/bundles/flare-temporal-intel-v1/</ns0:loc>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://dalien.net/bundles/xrp-etf-temporal-intel-v1/</ns0:loc>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://dalien.net/bundles/xrpl-settlement-intel-v1/</ns0:loc>
+  </ns0:url>
+</ns0:urlset>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Refinery — Machine-Readable DeFi Intelligence</title>
+
+  <style>
+    :root{
+      --bg:#04060d;
+      --panel:#0b1020;
+      --line:rgba(255,255,255,0.08);
+      --text:#f5f7ff;
+      --muted:#a6b1d1;
+      --blue:#00bfff;
+      --purple:#9d4dff;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+
+    body{
+      font-family:Inter,system-ui,sans-serif;
+      background:linear-gradient(135deg,#10091f 0%,#02070f 55%,#001729 100%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit;}
+
+    .container{
+      width:min(1600px,96%);
+      margin:auto;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      backdrop-filter:blur(18px);
+      background:rgba(4,6,13,0.88);
+      border-bottom:1px solid var(--line);
+    }
+
+.nav{
+  height:110px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:38px;
+  box-sizing:border-box;
+}
+    .logo{
+      font-size:50px;
+      font-weight:800;
+      letter-spacing:0.28em;
+    }
+
+    .menu{
+      display:flex;
+      gap:34px;
+      color:var(--muted);
+      text-transform:uppercase;
+      font-size:14px;
+    }
+
+    .cta{
+      border:1px solid rgba(157,77,255,0.55);
+      border-radius:14px;
+      padding:14px 24px;
+    }
+
+    .hero{
+      padding:78px 0 56px;
+      display:grid;
+      grid-template-columns:0.95fr 1.05fr;
+      gap:36px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:#c05cff;
+      letter-spacing:0.28em;
+      font-size:14px;
+      margin-bottom:20px;
+    }
+
+    h1{
+      font-size:35px;
+      line-height:1.02;
+      margin-bottom:28px;
+    }
+
+    h1 span{color:#707cff;}
+
+    .hero p{
+      color:var(--muted);
+      font-size:22px;
+      line-height:1.65;
+      margin-bottom:18px;
+    }
+
+    .buttons{
+      display:flex;
+      gap:18px;
+      margin-top:34px;
+    }
+
+    .btn{
+      padding:18px 28px;
+      border-radius:15px;
+      font-weight:700;
+      border:1px solid var(--line);
+    }
+
+    .primary{
+      background:linear-gradient(90deg,var(--purple),var(--blue));
+    }
+
+    .secondary{
+      background:rgba(255,255,255,0.035);
+    }
+
+    .hero-image img{
+      width:100%;
+      transform:scale(1.1);
+      max-width:100%;
+      height:auto;
+      display:block;
+      margin:auto;
+      border-radius:26px;
+      border:1px solid var(--line);
+      box-shadow:0 0 60px rgba(0,0,0,0.45);
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:18px;
+      margin:35px auto;
+    }
+
+    .card{
+      box-shadow:0 0 28px rgba(0,180,255,0.08);
+      background:rgba(255,255,255,0.035);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:24px;
+    }
+
+    .card h3{
+      font-size:18px;
+      margin-bottom:14px;
+    }
+
+    .card p{
+      color:var(--muted);
+      line-height:1.55;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:18px;
+      margin:38px auto 70px;
+    }
+
+    .stat{
+      box-shadow:0 0 24px rgba(130,80,255,0.07);
+      background:linear-gradient(145deg, rgba(20,32,58,0.92), rgba(8,18,34,0.96));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:24px;
+      text-align:center;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:34px;
+      margin-bottom:8px;
+    }
+
+    .stat span{
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+    }
+
+    .overview{
+      padding-bottom:80px;
+    }
+
+    .overview-box{
+      background:linear-gradient(145deg, rgba(20,32,58,0.92), rgba(8,18,34,0.96));
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:30px;
+      text-align:center;
+    }
+
+    .overview-box h2{
+      font-size:38px;
+      margin-bottom:24px;
+      text-align:left;
+    }
+
+    .overview-box img{
+      width:100%;
+      max-width:100%;
+      height:auto;
+      border-radius:24px;
+      border:1px solid var(--line);
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:36px 0;
+      text-align:center;
+      color:var(--muted);
+    }
+
+    @media(max-width:1100px){
+      .hero{grid-template-columns:1fr;}
+      .hero-image img{max-width:620px;}
+      h1{font-size:52px;}
+      .cards{grid-template-columns:1fr 1fr;}
+      .stats{grid-template-columns:1fr 1fr;}
+      .menu{display:none;}
+    }
+
+    @media(max-width:700px){
+      h1{font-size:42px;}
+      .hero p{font-size:18px;}
+      .cards,.stats{grid-template-columns:1fr;}
+      .buttons{flex-direction:column;}
+      .cta{display:none;}
+    }
+  </style>
+
+  <link rel="sitemap" type="application/xml" href="https://dalien.net/sitemap.xml">
+  <link rel="alternate" type="application/json" title="Refinery Package Registry" href="https://api.dalien.net/packages">
+  <link rel="alternate" type="application/json" title="Refinery Platform Manifest" href="https://api.dalien.net/public/refinery.json">
+  <link rel="alternate" type="application/json" title="Refinery Agent Manifest" href="https://api.dalien.net/public/agent_manifest.json">
+  <link rel="alternate" type="text/plain" title="Refinery LLMs Index" href="https://api.dalien.net/public/llms.txt">
+  <meta name="robots" content="index,follow">
+  <meta name="description" content="Refinery provides machine-readable temporal intelligence bundles for autonomous agents, with public discovery, Polygon USDC payments, and JSON bundle delivery.">
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+<div class="logo">
+  <img src="/logo.png" alt="Refinery Logo" style="height:176px;">
+</div>
+    <div class="menu">
+      <a href="https://api.dalien.net/public/agent_manifest.json">Manifest</a>
+      <a href="https://api.dalien.net/packages">Packages</a>
+      <a href="https://api.dalien.net/meta">Meta</a>
+      <a href="https://api.dalien.net/health">Status</a>
+    </div>
+
+    <a class="cta" href="https://api.dalien.net/public/refinery.json">Access Manifest</a>
+  </div>
+</header>
+
+<section class="hero container">
+  <div>
+    <div class="eyebrow">INTELLIGENCE. AGGREGATED. DELIVERED.</div>
+
+    <h1>DeFi Intelligence<br>for<br><span>Autonomous Agents</span></h1>
+
+    <p>Refinery aggregates, normalizes, and delivers real-time and historical DeFi intelligence in machine-readable formats.</p>
+
+    <p>Built for AI agents, trading systems, and autonomous financial infrastructure.</p>
+
+    <div class="buttons">
+      <a class="btn primary" href="https://api.dalien.net/packages">Explore Intelligence</a>
+      <a class="btn secondary" href="https://api.dalien.net">View Endpoints</a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <img src="/hero.jpg?v=5" alt="Refinery Intelligence">
+  </div>
+</section>
+
+<section id="intelligence" class="container cards">
+  <div class="card">
+    <h3>Aggregated Intelligence</h3>
+    <p>Unified insights from multiple DeFi data sources and temporal systems.</p>
+  </div>
+
+  <div class="card">
+    <h3>Machine Readable</h3>
+    <p>Structured JSON-native outputs optimized for autonomous agents.</p>
+  </div>
+
+  <div class="card">
+    <h3>Temporal Intelligence</h3>
+    <p>Historical bundle snapshots preserving evolving market state.</p>
+  </div>
+
+  <div class="card">
+    <h3>Built For Agents</h3>
+    <p>Designed for AI systems, bots, and autonomous infrastructure.</p>
+  </div>
+
+  <div class="card">
+    <h3>Polygon USDC Payments</h3>
+    <p>Low-cost Polygon USDC payment verification with XRPL retained as a legacy payment rail.</p>
+  </div>
+
+ <div class="card">
+    <h3>Agent Discovery</h3>
+    <p>Machine-readable discovery endpoints for autonomous agents.</p>
+    <ul>
+      <li><a href="https://api.dalien.net/packages">Package Registry</a></li>
+      <li><a href="https://api.dalien.net/public/refinery.json">Platform Manifest</a></li>
+      <li><a href="https://api.dalien.net/public/agent_manifest.json">Agent Manifest</a></li>
+      <li><a href="https://api.dalien.net/public/llms.txt">LLMs Index</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="container stats">
+    <div class="stat"><strong>MULTI-SOURCE</strong><span>Intelligence Aggregation</span></div>
+    <div class="stat"><strong>MACHINE-READABLE</strong><span>JSON-Native Outputs</span></div>
+    <div class="stat"><strong>TEMPORAL ARCHIVES</strong><span>Historical Market Memory</span></div>
+    <div class="stat"><strong>CROSS-DOMAIN</strong><span>DeFi Intelligence Synthesis</span></div>
+    <div class="stat"><strong>AUTONOMOUS-READY</strong><span>Built For Agents & Systems</span></div>
+  </section>
+
+<section class="container overview">
+    <div class="overview-box">
+      <h2>Agent Integration Overview</h2>
+      <img src="/platform-overview.jpg?v=5" alt="Refinery Platform Overview">
+    </div>
+  </section>
+
+<footer>
+  Refinery © 2026 — Machine-Readable Temporal Intelligence Infrastructure
+</footer>
+
+<p><a href="/refinery-crawler-manifest.html">Refinery crawler manifest and agent bundle discovery</a></p>
+
+<section id="intelligence-bundles" aria-labelledby="intelligence-bundles-title">
+  <div style="max-width:1100px;margin:0 auto;padding:64px 24px;">
+    <p style="margin:0 0 8px;color:#8fa3ad;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;">
+      Live machine-readable intelligence
+    </p>
+
+    <h2 id="intelligence-bundles-title" style="margin:0 0 16px;font-size:clamp(2rem,4vw,3rem);line-height:1.1;">
+      Intelligence Bundles
+    </h2>
+
+    <p style="max-width:760px;margin:0 0 32px;color:#aab9c1;line-height:1.7;">
+      Public discovery, transparent pricing, minimal redacted previews, and paid temporal intelligence
+      for autonomous trading, monitoring, routing, and risk systems.
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;">
+
+      <article style="border:1px solid #263943;border-radius:10px;padding:22px;background:#0d1a21;">
+        <h3 style="margin-top:0;">Solana Temporal Intelligence</h3>
+        <p>Slot progression, velocity, RPC latency, anomalies, and network-health context for timing-sensitive agents.</p>
+        <a href="/bundles/solana-temporal-intel-v1/" aria-label="View Solana Temporal Intelligence bundle">
+          View bundle
+        </a>
+      </article>
+
+      <article style="border:1px solid #263943;border-radius:10px;padding:22px;background:#0d1a21;">
+        <h3 style="margin-top:0;">DeFi Liquidation Intelligence</h3>
+        <p>Oracle divergence, liquidation-pressure proxies, composite risk, and escalation context.</p>
+        <a href="/bundles/defi-liquidation-intel-v1/" aria-label="View DeFi Liquidation Intelligence bundle">
+          View bundle
+        </a>
+      </article>
+
+      <article style="border:1px solid #263943;border-radius:10px;padding:22px;background:#0d1a21;">
+        <h3 style="margin-top:0;">DeFi Flow Intelligence</h3>
+        <p>Liquidity, TVL, stablecoin, volume, fee, yield, and concentration intelligence.</p>
+        <a href="/bundles/defi-flow-intel-v1/" aria-label="View DeFi Flow Intelligence bundle">
+          View bundle
+        </a>
+      </article>
+
+      <article style="border:1px solid #263943;border-radius:10px;padding:22px;background:#0d1a21;">
+        <h3 style="margin-top:0;">Flare Temporal Intelligence</h3>
+        <p>Flare network, market, DeFi, and live FTSOv2 oracle context with explicit source-status guardrails.</p>
+        <a href="/bundles/flare-temporal-intel-v1/" aria-label="View Flare Temporal Intelligence bundle">
+          View bundle
+        </a>
+      </article>
+
+      <article style="border:1px solid #263943;border-radius:10px;padding:22px;background:#0d1a21;">
+        <h3 style="margin-top:0;">XRP ETF Temporal Intelligence</h3>
+        <p>XRP market, XRPL telemetry, issuer monitoring, ETF-readiness context, and claim guardrails.</p>
+        <a href="/bundles/xrp-etf-temporal-intel-v1/" aria-label="View XRP ETF Temporal Intelligence bundle">
+          View bundle
+        </a>
+      </article>
+
+      <article style="border:1px solid #263943;border-radius:10px;padding:22px;background:#0d1a21;">
+        <h3 style="margin-top:0;">XRPL Settlement Intelligence</h3>
+        <p>Validated-ledger progression, settlement velocity, rail health, congestion, and routing context.</p>
+        <a href="/bundles/xrpl-settlement-intel-v1/" aria-label="View XRPL Settlement Intelligence bundle">
+          View bundle
+        </a>
+      </article>
+
+    </div>
+
+    <p style="margin:28px 0 0;">
+      <a href="https://api.dalien.net/packages">Machine-readable package registry</a>
+      &nbsp;·&nbsp;
+      <a href="https://api.dalien.net/agent-buy.json">Agent purchase guide</a>
+    </p>
+  </div>
+</section>
+
+</body>
+</html>

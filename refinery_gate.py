@@ -1,23 +1,249 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse, Response
 from pathlib import Path
+from datetime import datetime, timezone
+import base64
 import json
 from vault.payments.usdc.verify_polygon_rpc_tx import verify_transaction
 from vault.payments.usdc.verifier import create_payment_request
 from vault.payments.usdc.check_access import check_access
-from vault.payments.usdc.serve_bundle import serve_bundle, serve_bundle_response
+from vault.payments.usdc.serve_bundle import (
+    serve_bundle,
+    serve_bundle_response,
+)
+from refinery_bundle_loader import load_bundle_payload
+
+from x402 import x402ResourceServer
+from x402.http import HTTPFacilitatorClient
+from x402.http.middleware.fastapi import payment_middleware
+from x402.mechanisms.evm.exact.server import ExactEvmScheme
+
+BASE_DIR = Path(__file__).resolve().parent
+PACKAGES_PATH = BASE_DIR / "packages.json"
+CANONICAL_REGISTRY_PATH = BASE_DIR / "registry" / "packages.registry.json"
+X402_CONFIG_PATH = BASE_DIR / "config" / "x402.json"
+X402_AUDIT_PATH = BASE_DIR / "logs" / "x402_audit.jsonl"
+
+
+def load_x402_config():
+    if not X402_CONFIG_PATH.exists():
+        raise RuntimeError(f"x402 configuration missing: {X402_CONFIG_PATH}")
+
+    config = json.loads(X402_CONFIG_PATH.read_text())
+
+    required = (
+        "enabled",
+        "environment",
+        "bundle_id",
+        "route",
+        "network",
+        "facilitator_url",
+        "receiver_address",
+        "description",
+        "mime_type",
+    )
+
+    missing = [key for key in required if key not in config]
+
+    if missing:
+        raise RuntimeError(
+            "x402 configuration missing fields: " + ", ".join(missing)
+        )
+
+    if not str(config["route"]).startswith("/x402/"):
+        raise RuntimeError("x402 route must remain under /x402/")
+
+    return config
+
+
+def load_registry_bundle(bundle_id):
+    registry = json.loads(CANONICAL_REGISTRY_PATH.read_text())
+
+    bundle = next(
+        (
+            item
+            for item in registry.get("bundles", [])
+            if item.get("bundle_id") == bundle_id
+        ),
+        None,
+    )
+
+    if bundle is None:
+        raise RuntimeError(
+            f"x402 bundle missing from canonical registry: {bundle_id}"
+        )
+
+    if bundle.get("status") != "active":
+        raise RuntimeError(
+            f"x402 bundle is not active: {bundle_id}"
+        )
+
+    if not bundle.get("payment_enabled"):
+        raise RuntimeError(
+            f"x402 bundle is not payment enabled: {bundle_id}"
+        )
+
+    price = bundle.get("price_usd")
+
+    if price is None:
+        price = bundle.get("payment", {}).get("price_usd")
+
+    if not isinstance(price, (int, float)) or price <= 0:
+        raise RuntimeError(
+            f"invalid canonical x402 price for {bundle_id}: {price!r}"
+        )
+
+    return bundle, float(price)
+
+
+def decode_x402_header(value):
+    if not value:
+        return None
+
+    try:
+        padding = "=" * (-len(value) % 4)
+        decoded = base64.b64decode(value + padding)
+        return json.loads(decoded.decode("utf-8"))
+    except Exception:
+        return {
+            "decode_error": True,
+            "encoded_length": len(value),
+        }
+
+
+def append_x402_audit(record):
+    X402_AUDIT_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+    with X402_AUDIT_PATH.open("a", encoding="utf-8") as handle:
+        handle.write(
+            json.dumps(
+                record,
+                separators=(",", ":"),
+                sort_keys=True,
+            )
+            + "\n"
+        )
+
+
+X402_CONFIG = load_x402_config()
+X402_BUNDLE_ID = X402_CONFIG["bundle_id"]
+X402_ROUTE = X402_CONFIG["route"]
+X402_TEST_NETWORK = X402_CONFIG["network"]
+X402_TEST_FACILITATOR = X402_CONFIG["facilitator_url"]
+X402_RECEIVER_ADDRESS = X402_CONFIG["receiver_address"]
+X402_ENVIRONMENT = X402_CONFIG["environment"]
+
+X402_REGISTRY_BUNDLE, X402_PRICE_USD = load_registry_bundle(
+    X402_BUNDLE_ID
+)
 
 app = FastAPI(
     docs_url=None,
     redoc_url=None,
     openapi_url=None
 )
-app.mount("/public", StaticFiles(directory="public"), name="public")
 
-BASE_DIR = Path(__file__).resolve().parent
-PACKAGES_PATH = BASE_DIR / "packages.json"
-CANONICAL_REGISTRY_PATH = BASE_DIR / "registry" / "packages.registry.json"
+if X402_CONFIG["enabled"]:
+    x402_facilitator = HTTPFacilitatorClient({
+        "url": X402_TEST_FACILITATOR
+    })
+
+    x402_server = x402ResourceServer(x402_facilitator)
+    x402_server.register(
+        X402_TEST_NETWORK,
+        ExactEvmScheme()
+    )
+
+    x402_routes = {
+        f"GET {X402_ROUTE}": {
+            "accepts": [
+                {
+                    "scheme": "exact",
+                    "price": f"${X402_PRICE_USD:.2f}",
+                    "network": X402_TEST_NETWORK,
+                    "payTo": X402_RECEIVER_ADDRESS
+                }
+            ],
+            "description": X402_CONFIG["description"],
+            "mimeType": X402_CONFIG["mime_type"]
+        }
+    }
+
+    app.middleware("http")(
+        payment_middleware(
+            routes=x402_routes,
+            server=x402_server,
+            sync_facilitator_on_start=True
+        )
+    )
+
+
+@app.middleware("http")
+async def x402_audit_middleware(request: Request, call_next):
+    if request.url.path != X402_ROUTE:
+        return await call_next(request)
+
+    started_at = datetime.now(timezone.utc)
+    payment_signature_present = bool(
+        request.headers.get("payment-signature")
+    )
+
+    try:
+        response = await call_next(request)
+    except Exception as exc:
+        append_x402_audit({
+            "timestamp": started_at.isoformat(),
+            "event": "handler_error",
+            "route": X402_ROUTE,
+            "bundle_id": X402_BUNDLE_ID,
+            "environment": X402_ENVIRONMENT,
+            "network": X402_TEST_NETWORK,
+            "price_usd": X402_PRICE_USD,
+            "payment_signature_present": payment_signature_present,
+            "client_ip": request.client.host if request.client else None,
+            "user_agent": request.headers.get("user-agent"),
+            "error_type": type(exc).__name__,
+            "error": str(exc)[:500],
+        })
+        raise
+
+    payment_required = response.headers.get("payment-required")
+    payment_response = response.headers.get("payment-response")
+
+    if response.status_code == 402:
+        event = "payment_required"
+    elif response.status_code == 200 and payment_response:
+        event = "settled_delivery"
+    elif response.status_code == 200:
+        event = "delivery_without_settlement_header"
+    else:
+        event = "unexpected_response"
+
+    append_x402_audit({
+        "timestamp": started_at.isoformat(),
+        "completed_at": datetime.now(timezone.utc).isoformat(),
+        "event": event,
+        "route": X402_ROUTE,
+        "method": request.method,
+        "status_code": response.status_code,
+        "bundle_id": X402_BUNDLE_ID,
+        "environment": X402_ENVIRONMENT,
+        "network": X402_TEST_NETWORK,
+        "price_usd": X402_PRICE_USD,
+        "receiver_address": X402_RECEIVER_ADDRESS,
+        "payment_signature_present": payment_signature_present,
+        "payment_required": decode_x402_header(payment_required),
+        "payment_response": decode_x402_header(payment_response),
+        "client_ip": request.client.host if request.client else None,
+        "user_agent": request.headers.get("user-agent"),
+        "cf_ray": request.headers.get("cf-ray"),
+    })
+
+    return response
+
+
+app.mount("/public", StaticFiles(directory="public"), name="public")
 
 
 def json_file_response(relative_path: str):
@@ -513,6 +739,27 @@ async def xrpl_bundle():
 
     with open(bundle_path, "r") as f:
         return json.load(f)
+
+@app.get(X402_ROUTE)
+async def x402_test_solana_bundle():
+    result = load_bundle_payload(X402_BUNDLE_ID)
+
+    if not result.get("access"):
+        return JSONResponse(
+            status_code=404,
+            content=result
+        )
+
+    return {
+        "payment_protocol": "x402",
+        "payment_environment": X402_ENVIRONMENT,
+        "network": X402_TEST_NETWORK,
+        "bundle_id": X402_BUNDLE_ID,
+        "price_usd": X402_PRICE_USD,
+        "access": True,
+        "payload": result["payload"]
+    }
+
 
 @app.get("/health")
 async def health():

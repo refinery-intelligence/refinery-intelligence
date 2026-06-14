@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "environment": "testnet",
+  "bundle_id": "solana-temporal-intel-v1",
+  "route": "/x402/test/solana-temporal-intel-v1",
+  "network": "eip155:84532",
+  "facilitator_url": "https://x402.org/facilitator",
+  "receiver_address": "0x22f5d39703c6A2F1F9b01593aBc14D7B7caC8395",
+  "description": "Current paid Solana temporal intelligence payload from Refinery Intelligence",
+  "mime_type": "application/json"
+}
